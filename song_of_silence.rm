@@ -1,0 +1,174 @@
+"Song of Silence" by Nils Prior
+
+[=== KINDS & PROPERTIES ===]
+
+
+[=== ACTIONS ===]
+Understand the command "read" as something new.
+
+Reading is an action applying to one thing.
+Understand "read [something]" as reading.
+
+[=== WORLD ===]
+
+Book - Introduction
+
+Chapter - Rooms
+
+[=== ROOMS ===]
+
+Section - Study
+
+[=== LOCAL VARIABLES ===]
+Table of FireplaceSounds
+fireSoundSnippet(text)
+"In the fireplace the logs crackle softly."
+"A shower of sparks flies up the chimney."
+"From the fireplace you hear soft hisses and pops."
+"The flames lick slowly at the logs."
+"A small log shifts with a soft thud."
+"The fire pops, sending a glow across the walls."
+"In the fireplace the embers glow a deep, steady red."
+
+[=== STUDY DESCRIPTION ===]
+
+Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall, a fire crackling quietly in the grate. To your left, a sturdy desk holds a neat arrangement of papers, books, and writing implements on a leather blotter, a bookshelf beside it, a window above. To your right, a tall grandfather clock stands against the wall, its steady tick is filling the room like a second heartbeat. On the walls hang several framed pictures."
+
+[=== STUDY ITEMS ===]
+
+The fireplace is undescribed.
+The description of the fireplace is "A small fire crackles softly on a bed of logs, the stones around it blackened by years of use. A metal fireguard stands before the opening, catching sparks before they reach the floorboards."
+
+The paper envelope is an openable container.
+The paper envelope is closed.
+The paper envelope is undescribed.
+The description of the envelope is "The envelope is made from coarse, heavy paper of high quality, hinting at its importance. [if paper envelope is closed]It is sealed by a thick red wax seal.[otherwise]The wax seal is broken.[end if]"
+
+Instead of opening the paper envelope:
+now the paper envelope is open;
+say "You break the wax seal on the envelope and open it. Inside you see a handwritten letter"
+
+Check closing the paper envelope:
+say "[if paper envelope is open]The wax seal is broken and the heavy paper is too stiff to stay shut on its own.[otherwise]The envelope is already closed. In fact, an unbroken wax seal indicates it has not been openend yet." instead.
+
+The red wax seal is part of the paper envelope.
+The red wax seal is undescribed.
+The description of the red wax seal is "[if paper envelope is closed]A thick red wax seal bearing a personal signet – the initials A.B. set beneath a small heraldic device.[otherwise]The red wax seal on the envelope is broken.[end if]"
+
+The description of the handwritten letter is "Written in ink with a delicate handwriting. You notice dots of ink on several letters where the writer seems to have paused for a moment."
+
+Instead of reading the handwritten letter:
+	if the paper envelope is closed:
+		say "The letter is sealed inside the envelope.";
+	otherwise:
+		say "[italic type]Toledo, 5th October 1938[paragraph break]Dear friend,[paragraph break]I write in some haste, and I ask you to forgive the brevity of this letter. There are things I cannot commit to paper in full -- you will understand why when you arrive.[paragraph break]I have found a manuscript in the cathedral archive here in Toledo. It was written by a German monk in the year 1212, and it describes an event at the ford of the Tajo river, not far from where I am writing this. I have read it many times now. Each time, I find myself thinking of a night in September 1936 -- a night I have not spoken of to anyone, and which I had almost managed to convince myself was a consequence of exhaustion and fear.[paragraph break]I no longer believe that.[paragraph break]I need you to come to Toledo. I know this is asking much given the present situation, and I would not ask if I did not consider it necessary. Come as a scholar, come as a tourist -- but come. Ask for me at my apartment on the Calle del Locum, near the cathedral. Tell no one the true reason for your visit.[paragraph break]I believe it is coming back. And this time, ... (crossed out.)[paragraph break]Yours,[line break]Arturo Belmonte[line break][roman type]".
+
+The old clock is undescribed.
+The description of the old clock is "Behind the glass panel, a brass pendulum swings in long, unhurried arcs – patient, indifferent, as it has always been."
+
+The wooden desk is a supporter.
+It is undescribed.
+The description of the wooden desk is "A sturdy, wooden desk.[if the paper envelope is on the wooden desk] An envelope of coarse paper sits at the center.[end if][if the fountain pen is on the wooden desk] A fountain pen rests beside the blotter.[end if] A well-worn chair stands before it."
+
+The fountain pen is undescribed.
+The description of the fountain pen is "A well-used fountain pen, its nib slightly worn. The ink is dark blue."
+Understand "pen" or "fountain pen" as the fountain pen.
+
+The chair is a supporter.
+The chair is undescribed.
+The description of the chair is "A well-worn desk chair, its leather cracked and soft from years of use.[if the tweed jacket is on the chair] A tweed jacket hangs over the back.[end if][if the homburg is on the chair] A homburg hat rests on the seat.[end if]"
+
+
+The tweed jacket is a container.
+The tweed jacket is wearable.
+The tweed jacket is undescribed.
+The description of the tweed jacket is "A well-worn brown tweed jacket, the elbows slightly shiny from years of use."
+Understand "jacket" or "tweed" as the tweed jacket.
+
+The homburg hat is undescribed.
+The homburg hat is wearable.
+The description of the homburg hat is "A dark grey homburg, brushed clean and well-kept. The hat of a man who takes some pride in his appearance, even in difficult times."
+Understand "hat" or "homburg" as the homburg.
+
+The pocket calendar is undescribed.
+The description of the pocket calendar is "A small leather-bound pocket calendar. The current date is marked: October 14th, 1938."
+Understand "calendar" or "pocket calendar" or "notebook" as the pocket calendar.
+
+The description of the wall pictures is "A group photograph, slightly faded, hangs beside the door. Next to it, a small framed photograph of a young woman. Above the fireplace, an old engraving of Toledo."
+Understand "pictures", "picture", "photographs", "frames", "framed" as the wall pictures.
+
+The description of the group photograph is "A photograph, slightly faded. A group of academics stands before what appears to be a Roman ruin, squinting into the sun. You are somewhere in the back row."
+Understand "group photograph", "group photo", "academics", "faded photograph" as the group photograph.
+
+The description of the small photograph is "A small framed photograph of a young woman. You do not look at it for long."
+Understand "small photograph", "small photo", "woman", "young woman", "framed photograph" as the small photograph.
+
+The description of the engraving is "An old engraving of Toledo, seen from across the Tajo. The city looks much as it must have looked for centuries."
+Understand "engraving", "Toledo", "old engraving" as the engraving.
+
+The bookshelf is an open container.
+The bookshelf is undescribed.
+The bookshelf is fixed in place.
+The bookshelf is not openable.
+The description of the bookshelf is "Rows of books, ordered and familiar. The collection of many years of research and travel."
+Understand "shelf" as the bookshelf.
+
+The printed name of the Dozy is "Histoire des Musulmans d'Espagne".
+The description of the Dozy is "Reinhart Dozy's Histoire des Musulmans d'Espagne. A standard work, heavily annotated in pencil – your own handwriting fills the margins."
+The Dozy is proper-named.
+
+The printed name of the Caesarius is "Dialogus Miraculorum".
+The description of the Caesarius is "Caesarius von Heisterbach's Dialogus Miraculorum, a collection of medieval miracle stories. A bookmark sits somewhere in the middle."
+The Caesarius is proper-named.
+
+The printed name of the Baedeker is "Spanien und Portugal".
+The description of the Baedeker is "Karl Baedeker's Spanien und Portugal. The spine is cracked from repeated use. Toledo has several pages marked."
+The Baedeker is proper-named.
+
+The printed name of the Rilke is "Duineser Elegien".
+The description of the Rilke is "A slim volume, its cover worn soft. Rainer Maria Rilke's Duineser Elegien. It sits between the reference works like something that doesn't quite belong."
+The Rilke is proper-named.
+
+Instead of reading the Rilke:
+	say "You open [italic type]Duineser Elegien[roman type]. The spine falls open naturally at a familiar page – the binding worn soft from years of use.[paragraph break][italic type]Wer, wenn ich schriee, hörte mich denn aus der Engel Ordnungen?[paragraph break][roman type]You turn the page. There is a name written inside the cover, in handwriting that is not your own. You close the book."
+
+Understand "spanien und portugal", "spanien" as the Baedeker.
+Understand "histoire des musulmans d'espagne", "histoire", "musulmans" as the Dozy.
+Understand "dialogus miraculorum", "dialogus" as the Caesarius.
+Understand "duineser elegien", "duineser", "elegien" as the Rilke.
+
+The printed name of the study-window is "window".
+Understand "window" as the study-window.
+The description of the study-window is "A double-casement window with a wooden frame, overlooking the street below. The evening light falls soft and golden over the rooftops. Below, a few pedestrians make their way home, collars turned up against the autumn chill. It is, by all appearances, a perfectly ordinary evening in Munich."
+
+[=== STUDY SOUNDS ===]
+Every turn when the player is in the Study:
+	if a random chance of 1 in 4 succeeds:
+		choose a random row in the Table of FireplaceSounds;
+		say "[fireSoundSnippet entry][line break]";
+	if the remainder after dividing the turn count by 3 is 0:
+		say "[one of]Tick. Tock.[or]The clock marks another minute.[or]The clock's pendulum swings, unhurried.[or]The clock ticks on, indifferent.[or]A soft click from the grandfather clock.[cycling][line break]"
+		
+[=== STUDY ARCHITECTURE ===]
+The wall pictures are scenery in the Study.
+The group photograph is scenery in the Study.
+The small photograph is scenery in the Study.
+The engraving is scenery in the Study.
+The study-window is scenery in the Study.
+
+The fireplace is in the Study.
+The old clock is in the Study.
+The wooden desk is in the Study.
+The chair is in the Study.
+The tweed jacket is on the chair.
+The fountain pen is on the wooden desk.
+The homburg is on the chair.
+The pocket calendar is in the tweed jacket.
+The paper envelope is on the wooden desk.
+The handwritten letter is in the paper envelope.
+
+The bookshelf is in the Study.
+The Dozy is a thing in the bookshelf.
+The Caesarius is a thing in the bookshelf.
+The Baedeker is a thing in the bookshelf.
+The Rilke is a thing in the bookshelf.
