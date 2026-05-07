@@ -64,10 +64,7 @@ The description of the red wax seal is "[if paper envelope is closed]A thick red
 The description of the handwritten letter is "Written in ink with a delicate handwriting. You notice dots of ink on several letters where the writer seems to have paused for a moment."
 
 Instead of reading the handwritten letter:
-	if the paper envelope is closed:
-		say "The letter is sealed inside the envelope.";
-	otherwise:
-		say "[italic type]Toledo, 5th October 1938[paragraph break]Dear friend,[paragraph break]I write in some haste, and I ask you to forgive the brevity of this letter. There are things I cannot commit to paper in full -- you will understand why when you arrive.[paragraph break]I have found a manuscript in the cathedral archive here in Toledo. It was written by a German monk in the year 1212, and it describes an event at the ford of the Tajo river, not far from where I am writing this. I have read it many times now. Each time, I find myself thinking of a night in September 1936 -- a night I have not spoken of to anyone, and which I had almost managed to convince myself was a consequence of exhaustion and fear.[paragraph break]I no longer believe that.[paragraph break]I need you to come to Toledo. I know this is asking much given the present situation, and I would not ask if I did not consider it necessary. Come as a scholar, come as a tourist -- but come. Ask for me at my apartment on the Calle del Locum, near the cathedral. Tell no one the true reason for your visit.[paragraph break]Yours,[line break]Arturo Belmonte[line break][roman type]".
+	say "[italic type]Toledo, 5th October 1938[paragraph break]Dear friend,[paragraph break]I hope this letter finds you well. I write to you in your capacity as a scholar of medieval German texts -- I have come across something in the cathedral archive here that I believe would interest you considerably.[paragraph break]Among the documents I have been cataloguing, I found a manuscript I cannot yet date with precision, though it appears to be from the early thirteenth century. It is written in Middle High German, by a monk from Regensburg, and it describes an incident at the ford of the Tagus river -- unusual in content, historically significant, and in certain details quite unlike anything I have encountered before. I would prefer to discuss it in person rather than commit the details to a letter.[paragraph break]I should also mention that I have a personal reason for wanting to speak with someone I trust. There is a matter from 1936 -- something I witnessed during the siege here -- which I have never spoken of to anyone. I find myself thinking of it again.[paragraph break]If you can arrange to come to Toledo, I would be most grateful. Ask for me at the cathedral. I will explain everything when you arrive.[paragraph break]With collegial regards,[line break]Arturo Belmonte[roman type][paragraph break][italic type]P.S. Toledo is not quite what it was. You will understand when you arrive.[roman type]"
 
 The old clock is undescribed.
 The description of the old clock is "Behind the glass panel, a brass pendulum swings in long, unhurried arcs – patient, indifferent, as it has always been."
@@ -239,14 +236,19 @@ Understand "shelves", "shelf", "preserves" as the pantry shelves.
 
 The loose floorboard is openable.
 The loose floorboard is closed.
-The description of the loose floorboard is "[if floorboard is closed]One of the floorboards sits slightly proud of the others. You have always told yourself you would only lift it if things became truly desperate.[otherwise]One of the boards is lifted and reveals a hidden compartment." [=== Beschreibung cloth bundle ===]
+To say floorboard contents:
+	if cloth bundle is in the loose floorboard:
+		say " Inside it you see some items wrapped in an old oilcloth."
+
+The description of the loose floorboard is "[if the loose floorboard is closed]One of the floorboards sits slightly proud of the others. You have always told yourself you would only lift it if things became truly desperate.[otherwise]One of the boards is lifted and reveals a hidden compartment.[floorboard contents][end if]"
+
 Understand "floorboard", "floor", "board" as the loose floorboard.
 
 The cloth bundle is a container.
 The cloth bundle is openable.
 The cloth bundle is closed.
 The cloth bundle is undescribed.
-The description of the cloth bundle is "A cloth bundle containing a few letters bound with string – old ones, by the look of them, the ink faded. The kind you keep not because you should, but because you cannot bring yourself to burn them. A worn copy of the Neue Vorwärts. And the Luger, wrapped in oilcloth."
+The description of the cloth bundle is "A cloth bundle containing a few letters bound with string – old ones, by the look of them, the ink faded. The kind you keep not because you should, but because you cannot bring yourself to burn them. A worn copy of the Neue Vorwärts. And the Luger."
 [=== After bundle has been opened, items are in inventory, bundle is nowhere ===]
 
 The Neue Vorwärts is undescribed.
@@ -257,7 +259,7 @@ The description of the bundle of letters  is "...".
 
 The Luger is undescribed.
 The Luger is wearable.
-The description of the Luger is "A Luger P08, kept clean and loaded. You hope you will not need it."
+The description of the Luger is "A Luger P08, kept clean and loaded. The initials stamped into the grip are not your own."
 Understand "gun", "pistol", "luger" as the Luger.
 
 [=== ARCHITECTURE ===]
@@ -282,7 +284,6 @@ Section - Bedroom
 
 Bedroom is a room. "A quiet, orderly bedroom. A heavy wardrobe dominates one wall, its dark wood polished to a dull shine. The bed is neatly made, a single pillow at its head. On the nightstand, a small lamp and a well-worn paperback. A suitcase sits beneath the bed, just visible in the shadow. The hallway lies to the east."
 Bedroom is west of Hallway.
-
 
 
 
