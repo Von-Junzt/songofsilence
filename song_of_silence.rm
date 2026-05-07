@@ -3,19 +3,24 @@
 [=== KINDS & PROPERTIES ===]
 
 
-[=== ACTIONS ===]
+[=== GLOBAL ACTIONS ===]
 Understand the command "read" as something new.
 
 Reading is an action applying to one thing.
 Understand "read [something]" as reading.
 
+Before reading something:
+	if the noun is in a container and the noun is not carried by the player:
+		say "[italic type](You take [the noun] out of [the holder of the noun].)[roman type][line break]";
+		now the noun is carried by the player.
+
 [=== WORLD ===]
 
 Book - Introduction
 
-Chapter - Rooms
+Chapter - Apartment
 
-[=== ROOMS ===]
+[=== APARTMENT MAP ===]
 
 Section - Study
 
@@ -23,18 +28,19 @@ Section - Study
 Table of FireplaceSounds
 fireSoundSnippet(text)
 "In the fireplace the logs crackle softly."
-"A shower of sparks flies up the chimney."
+"A few sparks fly up the chimney."
 "From the fireplace you hear soft hisses and pops."
 "The flames lick slowly at the logs."
 "A small log shifts with a soft thud."
 "The fire pops, sending a glow across the walls."
 "In the fireplace the embers glow a deep, steady red."
 
-[=== STUDY DESCRIPTION ===]
+[=== DESCRIPTION ===]
 
-Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall, a fire crackling quietly in the grate. To your left, a sturdy desk holds a neat arrangement of papers, books, and writing implements on a leather blotter, a bookshelf beside it, a window above. To your right, a tall grandfather clock stands against the wall, its steady tick is filling the room like a second heartbeat. On the walls hang several framed pictures."
+Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall, a fire crackling quietly in the grate. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it. To your right, a tall grandfather clock stands against the wall, its steady tick is filling the room like a second heartbeat. On the walls hang several framed pictures. A door leads west to the foyer."
+Study is east of Foyer.
 
-[=== STUDY ITEMS ===]
+[=== ITEMS ===]
 
 The fireplace is undescribed.
 The description of the fireplace is "A small fire crackles softly on a bed of logs, the stones around it blackened by years of use. A metal fireguard stands before the opening, catching sparks before they reach the floorboards."
@@ -61,7 +67,7 @@ Instead of reading the handwritten letter:
 	if the paper envelope is closed:
 		say "The letter is sealed inside the envelope.";
 	otherwise:
-		say "[italic type]Toledo, 5th October 1938[paragraph break]Dear friend,[paragraph break]I write in some haste, and I ask you to forgive the brevity of this letter. There are things I cannot commit to paper in full -- you will understand why when you arrive.[paragraph break]I have found a manuscript in the cathedral archive here in Toledo. It was written by a German monk in the year 1212, and it describes an event at the ford of the Tajo river, not far from where I am writing this. I have read it many times now. Each time, I find myself thinking of a night in September 1936 -- a night I have not spoken of to anyone, and which I had almost managed to convince myself was a consequence of exhaustion and fear.[paragraph break]I no longer believe that.[paragraph break]I need you to come to Toledo. I know this is asking much given the present situation, and I would not ask if I did not consider it necessary. Come as a scholar, come as a tourist -- but come. Ask for me at my apartment on the Calle del Locum, near the cathedral. Tell no one the true reason for your visit.[paragraph break]I believe it is coming back. And this time, ... (crossed out.)[paragraph break]Yours,[line break]Arturo Belmonte[line break][roman type]".
+		say "[italic type]Toledo, 5th October 1938[paragraph break]Dear friend,[paragraph break]I write in some haste, and I ask you to forgive the brevity of this letter. There are things I cannot commit to paper in full -- you will understand why when you arrive.[paragraph break]I have found a manuscript in the cathedral archive here in Toledo. It was written by a German monk in the year 1212, and it describes an event at the ford of the Tajo river, not far from where I am writing this. I have read it many times now. Each time, I find myself thinking of a night in September 1936 -- a night I have not spoken of to anyone, and which I had almost managed to convince myself was a consequence of exhaustion and fear.[paragraph break]I no longer believe that.[paragraph break]I need you to come to Toledo. I know this is asking much given the present situation, and I would not ask if I did not consider it necessary. Come as a scholar, come as a tourist -- but come. Ask for me at my apartment on the Calle del Locum, near the cathedral. Tell no one the true reason for your visit.[paragraph break]Yours,[line break]Arturo Belmonte[line break][roman type]".
 
 The old clock is undescribed.
 The description of the old clock is "Behind the glass panel, a brass pendulum swings in long, unhurried arcs – patient, indifferent, as it has always been."
@@ -76,8 +82,7 @@ Understand "pen" or "fountain pen" as the fountain pen.
 
 The chair is a supporter.
 The chair is undescribed.
-The description of the chair is "A well-worn desk chair, its leather cracked and soft from years of use.[if the tweed jacket is on the chair] A tweed jacket hangs over the back.[end if][if the homburg is on the chair] A homburg hat rests on the seat.[end if]"
-
+The description of the chair is "The leather seat is cracked and soft from years of use.[if the tweed jacket is on the chair] A tweed jacket hangs over the back.[end if][if the homburg is on the chair] A homburg hat rests on the seat.[end if]"
 
 The tweed jacket is a container.
 The tweed jacket is wearable.
@@ -141,15 +146,15 @@ The printed name of the study-window is "window".
 Understand "window" as the study-window.
 The description of the study-window is "A double-casement window with a wooden frame, overlooking the street below. The evening light falls soft and golden over the rooftops. Below, a few pedestrians make their way home, collars turned up against the autumn chill. It is, by all appearances, a perfectly ordinary evening in Munich."
 
-[=== STUDY SOUNDS ===]
+[=== SOUNDS ===]
 Every turn when the player is in the Study:
 	if a random chance of 1 in 4 succeeds:
 		choose a random row in the Table of FireplaceSounds;
 		say "[fireSoundSnippet entry][line break]";
 	if the remainder after dividing the turn count by 3 is 0:
-		say "[one of]Tick. Tock.[or]The clock marks another minute.[or]The clock's pendulum swings, unhurried.[or]The clock ticks on, indifferent.[or]A soft click from the grandfather clock.[cycling][line break]"
+		say "[one of]The clock marks another minute.[or]The clock's pendulum swings, unhurried.[or]The clock ticks on, indifferent.[or]A soft click from the grandfather clock.[cycling][line break]"
 		
-[=== STUDY ARCHITECTURE ===]
+[=== ARCHITECTURE ===]
 The wall pictures are scenery in the Study.
 The group photograph is scenery in the Study.
 The small photograph is scenery in the Study.
@@ -172,3 +177,100 @@ The Dozy is a thing in the bookshelf.
 The Caesarius is a thing in the bookshelf.
 The Baedeker is a thing in the bookshelf.
 The Rilke is a thing in the bookshelf.
+
+Section - Foyer
+
+Foyer is a room. "A narrow entrance hall with high ceilings, its dark hexagonal floor tiles worn smooth in the middle where generations of feet have passed. A coat rack with a mirror stands beside the door, a single winter coat hanging from it. In the corner, a small telephone table holds a black Bakelite telephone. The bathroom door stands to the west[if bathroom door is closed], closed[end if]. The heavy front door, its upper half frosted glass, leads outside. The hallway continues to the north."
+The Foyer is south of Hallway.
+
+Section - Bathroom
+
+[=== DESCRIPTION ===]
+Bathroom is a room. "A small, cold bathroom. White tiles with a border of dark blue halfway up the wall. A claw-foot bathtub dominates the room, a rubber hand shower coiled over the tap. Above the washbasin, a mirror reflects the overhead light. A gas water heater ticks quietly on the wall. A small frosted window lets in a pale sliver of evening sky. The foyer lies to the east."
+
+[=== ITEMS ===]
+The bathroom door is a door.
+The bathroom door is closed.
+The bathroom door is scenery.
+The printed name of the bathroom door is "bathroom door".
+Understand "door" or "bathroom door" as the bathroom door.
+
+The printed name of the bathroom mirror is "mirror".
+Understand "mirror" as the bathroom mirror.
+The description of the bathroom mirror is "A rectangular mirror above the washbasin, framed in white tile."
+
+Instead of searching the bathroom mirror:
+	say "A day's worth of stubble. But the face looking back at you is one you can live with. The eyes are sharp, and that's what counts."
+
+[=== ARCHITECTURE ===]
+The bathroom door is west of Foyer and east of Bathroom.
+The bathroom mirror is scenery in the Bathroom.
+
+Section - Hallway
+
+Hallway is a room. "A long, narrow hallway running through the heart of the apartment. A worn runner covers the floorboards, its pattern faded to near-invisibility. A single ceiling lamp casts a warm but insufficient light. Doors lead to the bedroom to the west, the dining room to theeast, and the kitchen to the north. The foyer opens to the south."
+
+Section - Kitchen
+
+[=== DESCRIPTION ===]
+Kitchen is a room. "A narrow kitchen smelling faintly of coffee and old wood. A cast-iron stove stands against one wall, its surface scrubbed clean. Wooden cabinets line the walls above a stone sink. A small table with two chairs sits beneath the window, which looks out onto the rear courtyard. A note is propped against the salt shaker. The pantry lies to the west, the hallway to the south."
+Kitchen is north of Hallway.
+
+[=== ITEMS ===]
+The handwritten note is undescribed.
+The description of the handwritten note is "A receipt from the Viktualienmarkt, turned over. On the back, a few lines in a neat, economical hand."
+Instead of reading the handwritten note:
+	say "Der Herr von nebenan hat wieder nach Ihnen gefragt. Ich habe gesagt, Sie sind beschäftigt. Bin morgen früh wieder da. – F.  [line break][italic type](The gentleman next door has been asking for you again. I told him you were busy. Back tomorrow morning. – F.)[roman type]"
+
+[=== ARCHITECTURE ===]
+The handwritten note is in the kitchen.
+
+Section - Pantry
+
+Section - Pantry
+
+Pantry is a room. "A small, cool pantry, its shelves lined with preserves and dry goods. A faint smell of must and vinegar. The single high window, fitted with an iron grille, lets in little light. The kitchen lies to the east."
+Pantry is west of Kitchen.
+
+[=== ITEMS ===]
+The description of the pantry shelves is "Rows of preserves and dry goods, neatly arranged. One of the shelves sits slightly uneven."
+Understand "shelves", "shelf", "preserves" as the pantry shelves.
+
+
+The loose floorboard is openable.
+The loose floorboard is closed.
+The description of the loose floorboard is "One of the floorboards sits slightly proud of the others. You have always told yourself you would only lift it if things became truly desperate."
+Understand "floorboard", "floor", "board" as the loose floorboard.
+
+The hidden bundle is a container.
+The hidden bundle is openable.
+The hidden bundle is closed.
+The hidden bundle is undescribed.
+The description of the hidden bundle is "A cloth bundle containing a few letters bound with string – old ones, by the look of them, the ink faded. The kind you keep not because you should, but because you cannot bring yourself to burn them. A worn copy of the Neue Vorwärts. And the Luger, wrapped in oilcloth."
+Understand "bundle", "cloth bundle", "cloth" as the hidden bundle.
+
+The Luger is undescribed.
+The Luger is wearable.
+The description of the Luger is "A Luger P08, kept clean and loaded. You hope you will not need it."
+Understand "gun", "pistol", "luger" as the Luger.
+
+[=== ARCHITECTURE ===]
+The hidden bundle is in the loose floorboard.
+The Luger is in the hidden bundle.
+
+The pantry shelves are scenery in the Pantry.
+The loose floorboard is scenery in the Pantry.
+
+Instead of opening the loose floorboard:
+	now the loose floorboard is open;
+	say "You lift the floorboard. Beneath it, wrapped in cloth, is everything you keep hidden."
+
+Section - Dining Room
+
+Dining Room is a room. "A formal dining room that sees little use. A large table surrounded by six chairs dominates the room, its surface bare and polished. A heavy sideboard stands against one wall, its glass doors displaying china that is rarely taken out. A lamp hangs low over the table, unlit. The hallway lies to the southwest."
+Dining Room is east of Hallway.
+
+Section - Bedroom
+
+Bedroom is a room. "A quiet, orderly bedroom. A heavy wardrobe dominates one wall, its dark wood polished to a dull shine. The bed is neatly made, a single pillow at its head. On the nightstand, a small lamp and a well-worn paperback. A suitcase sits beneath the bed, just visible in the shadow. The hallway lies to the east."
+Bedroom is west of Hallway.
