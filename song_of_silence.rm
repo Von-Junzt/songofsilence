@@ -239,15 +239,21 @@ Understand "shelves", "shelf", "preserves" as the pantry shelves.
 
 The loose floorboard is openable.
 The loose floorboard is closed.
-The description of the loose floorboard is "One of the floorboards sits slightly proud of the others. You have always told yourself you would only lift it if things became truly desperate."
+The description of the loose floorboard is "[if floorboard is closed]One of the floorboards sits slightly proud of the others. You have always told yourself you would only lift it if things became truly desperate.[otherwise]One of the boards is lifted and reveals a hidden compartment." [=== Beschreibung cloth bundle ===]
 Understand "floorboard", "floor", "board" as the loose floorboard.
 
-The hidden bundle is a container.
-The hidden bundle is openable.
-The hidden bundle is closed.
-The hidden bundle is undescribed.
-The description of the hidden bundle is "A cloth bundle containing a few letters bound with string – old ones, by the look of them, the ink faded. The kind you keep not because you should, but because you cannot bring yourself to burn them. A worn copy of the Neue Vorwärts. And the Luger, wrapped in oilcloth."
-Understand "bundle", "cloth bundle", "cloth" as the hidden bundle.
+The cloth bundle is a container.
+The cloth bundle is openable.
+The cloth bundle is closed.
+The cloth bundle is undescribed.
+The description of the cloth bundle is "A cloth bundle containing a few letters bound with string – old ones, by the look of them, the ink faded. The kind you keep not because you should, but because you cannot bring yourself to burn them. A worn copy of the Neue Vorwärts. And the Luger, wrapped in oilcloth."
+[=== After bundle has been opened, items are in inventory, bundle is nowhere ===]
+
+The Neue Vorwärts is undescribed.
+The description of the Neue Vorwärts is "A magazine."
+
+The bundle of letters is undescribed.
+The description of the bundle of letters  is "...".
 
 The Luger is undescribed.
 The Luger is wearable.
@@ -255,7 +261,9 @@ The description of the Luger is "A Luger P08, kept clean and loaded. You hope yo
 Understand "gun", "pistol", "luger" as the Luger.
 
 [=== ARCHITECTURE ===]
-The hidden bundle is in the loose floorboard.
+The cloth bundle is in the loose floorboard.
+The Neue Vorwärts is in the cloth bundle.
+The bundle of letters
 The Luger is in the hidden bundle.
 
 The pantry shelves are scenery in the Pantry.
@@ -274,3 +282,8 @@ Section - Bedroom
 
 Bedroom is a room. "A quiet, orderly bedroom. A heavy wardrobe dominates one wall, its dark wood polished to a dull shine. The bed is neatly made, a single pillow at its head. On the nightstand, a small lamp and a well-worn paperback. A suitcase sits beneath the bed, just visible in the shadow. The hallway lies to the east."
 Bedroom is west of Hallway.
+
+
+
+
+
