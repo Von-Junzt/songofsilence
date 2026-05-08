@@ -112,8 +112,8 @@ The description of the handwritten letter is "Written in ink with a delicate han
 Instead of reading the handwritten letter:
 	say "[italic type]Toledo, 5th October 1938[paragraph break]Dear friend,[paragraph break]I hope this letter finds you well. I write to you in your capacity as a scholar of medieval German texts -- I have come across something in the cathedral archive here that I believe would interest you considerably.[paragraph break]Among the documents I have been cataloguing, I found a manuscript I cannot yet date with precision, though it appears to be from the early thirteenth century. It is written in Middle High German, by a monk from Regensburg, and it describes an incident at the ford of the Tagus river -- unusual in content, historically significant, and in certain details quite unlike anything I have encountered before. I would prefer to discuss it in person rather than commit the details to a letter.[paragraph break]I should also mention that I have a personal reason for wanting to speak with someone I trust. There is a matter from 1936 -- something I witnessed during the siege here -- which I have never spoken of to anyone. I find myself thinking of it again.[paragraph break]If you can arrange to come to Toledo, I would be most grateful. Ask for me at the cathedral. I will explain everything when you arrive.[paragraph break]With collegial regards,[line break]Arturo Belmonte[roman type][paragraph break][italic type]P.S. Toledo is not quite what it was. You will understand when you arrive.[line break][roman type]"
 
-The old clock is undescribed.
-The description of the old clock is "Behind the glass panel, a brass pendulum swings in long, unhurried arcs – patient, indifferent, as it has always been. The hands show a quarter past six."
+The old clock is scenery.
+The description of the old clock is "Behind the glass panel, a brass pendulum swings in long, unhurried arcs – patient, indifferent, as it has always been. The hands show half past two."
 
 The wooden desk is a supporter.
 It is undescribed.
@@ -187,7 +187,7 @@ Understand "duineser elegien", "duineser", "elegien" as the Rilke.
 
 The printed name of the study-window is "window".
 Understand "window" as the study-window.
-The description of the study-window is "A double-casement window with a wooden frame, overlooking the street below. The evening light falls soft and golden over the rooftops. Below, a few pedestrians make their way home, collars turned up against the autumn chill. It is, by all appearances, a perfectly ordinary evening in Munich."
+The description of the study-window is "A double-casement window with a wooden frame, overlooking the street below. The afternoon light falls pale and clear over the rooftops. Below, a few pedestrians go about their day, collars turned up against the October chill. It is, by all appearances, a perfectly ordinary afternoon in Munich."
 
 [=== SOUNDS ===]
 Every turn when the player is in the Study:
@@ -231,7 +231,7 @@ The Foyer is south of Hallway.
 Section - Bathroom
 
 [=== DESCRIPTION ===]
-Bathroom is a room. "A small, cold bathroom. White tiles with a border of dark blue halfway up the wall. A claw-foot bathtub dominates the room, a rubber hand shower coiled over the tap. Above the washbasin, a mirror reflects the overhead light. A gas water heater ticks quietly on the wall. A small frosted window lets in a pale sliver of evening sky. The foyer lies to the east."
+Bathroom is a room. "A small, cold bathroom. White tiles with a border of dark blue halfway up the wall. A claw-foot bathtub dominates the room, a rubber hand shower coiled over the tap. Above the washbasin, a mirror reflects the overhead light. A gas water heater ticks quietly on the wall. A small frosted window lets in a pale rectangle of afternoon light. The foyer lies to the east."
 
 [=== ITEMS ===]
 The bathroom door is a door.
