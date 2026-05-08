@@ -4,6 +4,9 @@ Book - Global Settings
 Chapter - Player Settings
 
 [=== PLAYER SETTINGS ===]
+
+Section - Carrying Capacity
+
 The carrying capacity of the player is 4.
 
 Chapter - Kinds + Properties
@@ -64,23 +67,11 @@ Chapter - Item Rules
 
 [=== ITEM RULES ===]
 
-Section - Polo Lighter
-
-Before inserting the polo lighter into something 
-when the polo lighter is switched on:
-	now the polo lighter is switched off;
-	say "You press the arm down before pocketing the lighter. 
-	A close thing.[line break]"
-
-[=== WORLD ===]
-
 Book - Introduction
 
 Chapter - Apartment
 
 Section - Apartment Variables
-
-[=== APARTMENT (STUDY, HALLWAY, FOYER, BATHROOM, BEDROOM, KITCHEN, DININGROOM, PANTRY ===]
 
 [=== APARTMENT SCOPE VARIABLES ===]
 Table of StreetSounds
@@ -89,13 +80,13 @@ streetSoundSnippet(text)
 "A car passes in the street, its engine fading into the distance."
 "The distant sound of a tram."
 "The distant sound of a church bell."
-"A child's voice from the street below, then silence."
+"A child's voice from the street below."
 "The wind moves through the street outside."
 
 Table of StaircaseSounds
 staircaseSoundSnippet(text)
 "From the staircase, the creak of a floorboard."
-"Footsteps on the stairs, then silence."
+"Quick Footsteps on the stairs, then silence."
 "Muffled voices from the staircase, too quiet to make out."
 "A neighbour's door, somewhere above."
 "A distant door, somewhere in the building."
@@ -108,7 +99,7 @@ Every turn when the player is not in the Study and the player is not in the Foye
 		say "[streetSoundSnippet entry][line break]"
 		
 Every turn when the player is in the Foyer:
-	if a random chance of 1 in 4 succeeds:
+	if a random chance of 1 in 8 succeeds:
 		choose a random row in the Table of StaircaseSounds;
 		say "[staircaseSoundSnippet entry][line break]"
 
@@ -127,7 +118,7 @@ fireSoundSnippet(text)
 
 [=== DESCRIPTION ===]
 
-Study is a room. "Study is a room. Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall[if the fireplace is lit], a fire crackling quietly in the grate[otherwise], its grate neatly laid with logs and kindling[end if]. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it[if the tweed jacket is on the chair and the homburg is on the chair], your jacket and hat draped over it[otherwise if the tweed jacket is on the chair], your jacket hanging over the back[otherwise if the homburg is on the chair], your hat resting on the seat[end if]. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
+Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall[if the fireplace is lit], a fire crackling quietly in the grate[otherwise], its grate neatly laid with logs and kindling[end if]. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it[if the tweed jacket is on the chair and the homburg is on the chair], your jacket and hat draped over it[otherwise if the tweed jacket is on the chair], your jacket hanging over the back[otherwise if the homburg is on the chair], your hat resting on the seat[end if]. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
 Study is east of Foyer.
 
 [=== ITEMS ===]
@@ -159,6 +150,12 @@ Instead of burning the fireplace:
 		say "You touch the lighter to the kindling. The fire catches quickly, and the room settles into a familiar warmth. You watch it for a moment before turning back to your work.";
 	otherwise:
 		say "You would need something to light it with."
+		
+Before inserting the polo lighter into something 
+when the polo lighter is switched on:
+	now the polo lighter is switched off;
+	say "You press the arm down before pocketing the lighter. 
+	A close thing.[line break]"
 
 The paper envelope is an openable container.
 The paper envelope is closed.
@@ -341,12 +338,12 @@ The bathroom mirror is scenery in the Bathroom.
 
 Section - Hallway
 
-Hallway is a room. "A long, narrow hallway running through the heart of the apartment. A worn runner covers the floorboards, its pattern faded to near-invisibility. A single ceiling lamp casts a warm but insufficient light. Doors lead to the bedroom to the west, the dining room to theeast, and the kitchen to the north. The foyer opens to the south."
+Hallway is a room. "A long, narrow hallway running through the heart of the apartment. A worn runner covers the floorboards, its pattern faded to near-invisibility. A single ceiling lamp casts a warm but insufficient light. Doors lead to the bedroom to the west, the dining room to the east, and the kitchen to the north. The foyer opens to the south."
 
 Section - Kitchen
 
 [=== DESCRIPTION ===]
-Kitchen is a room. "A narrow kitchen smelling faintly of coffee and old wood. A cast-iron stove stands against one wall, its surface scrubbed clean. Wooden cabinets line the walls above a stone sink. A small table with two chairs sits beneath the window, which looks out onto the rear courtyard. A note is propped against the salt shaker. A plain wooden door leads west. The hallway lies to the south."
+Kitchen is a room. "A narrow kitchen smelling faintly of coffee and old wood. A cast-iron stove stands against one wall, its surface scrubbed clean. Wooden cabinets line the walls above a stone sink. A small table with two chairs sits beneath the window, which looks out onto the rear courtyard.[if the handwritten note is on the table] A note is propped against the salt shaker.[end if] [if pantry door is closed]A plain wooden door leads west[otherwise]An open door leads west[end if]. The hallway lies to the south."
 Kitchen is north of Hallway.
 The pantry door is west of Kitchen and east of Pantry.
 
@@ -356,6 +353,15 @@ The pantry door is locked.
 The pantry door is scenery.
 Understand "door" or "pantry door" as the pantry door.
 The description of the pantry door is "A plain wooden door, its paint worn at the edges. A small keyhole sits below the handle."
+
+The stove is scenery.
+
+The chairs are scenery.
+
+Understand "chair" as the chairs.
+
+The table is scenery.
+The description of the table is "A small table, wiped clean. Two chairs. F. has been here.[if the handwritten note is on the table] A note leans against the salt shaker, where she left it.[end if]"
 
 The pantry key is undescribed.
 Understand "key" or "small key" or "iron key" as the pantry key.
@@ -379,7 +385,11 @@ Instead of reading the handwritten note:
 
 [=== ARCHITECTURE ===]
 The kitchen cabinets are in the kitchen.
-The handwritten note is in the kitchen.
+The handwritten note is on the table.
+
+The stove is in the kitchen.
+The table is in the kitchen.
+The chairs are in the kitchen.
 
 Section - Pantry
 
