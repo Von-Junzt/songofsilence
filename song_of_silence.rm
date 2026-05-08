@@ -50,18 +50,21 @@ Understand "light [something]" as burning.
 Section - Reading
 
 Understand the command "read" as something new.
-
 Reading is an action applying to one thing.
 Understand "read [something]" as reading.
 
-A thing can be read or unread. A thing is usually unread.
+Check reading:
+	if the noun is not a document:
+		say "That's not something you can read." instead.
 
-Before reading something:
+Before reading a document:
 	if the noun is in a container and the noun is not carried by the player:
 		if the holder of the noun is closed:
 			say "That's inside [the holder of the noun]." instead;
 		say "[italic type](You take [the noun] out of [the holder of the noun].)[roman type][line break]";
 		now the noun is carried by the player;
+
+Carry out reading a document:
 	now the noun is read.
 
 Chapter - Item Rules
@@ -110,12 +113,12 @@ staircaseSoundSnippet(text)
 
 [=== APARTMENT SOUNDS ===]
 Every turn when the player is not in the Study and the player is not in the Foyer and the player is not in the Hallway:
-	if a random chance of 1 in 5 succeeds:
+	if a random chance of 1 in 4 succeeds:
 		choose a random row in the Table of StreetSounds;
 		say "[streetSoundSnippet entry][line break]"
 		
 Every turn when the player is in the Foyer:
-	if a random chance of 1 in 8 succeeds:
+	if a random chance of 1 in 6 succeeds:
 		choose a random row in the Table of StaircaseSounds;
 		say "[staircaseSoundSnippet entry][line break]"
 
@@ -124,16 +127,16 @@ Section - Study
 [=== LOCAL VARIABLES ===]
 Table of TiledStoveSounds
 stoveSoundSnippet(text)
-"A low drone from behind the iron door – the fire drawing well."
-"The ceramic ticks as it expands with the heat."
+"A low drone from behind the iron door of the stove – the fire drawing well."
+"The iron door of the firebox ticks as it heats up."
 "A muffled shift from inside the stove. The coals settling."
-"The stove breathes steadily behind its door."
-"A soft knock from the metal inside – nothing to worry about."
-"The draft pulls quietly through the damper."
+"The stove breathes steadily behind its iron door."
+"A dull knock from within the stove."
+"The draft pulls quietly through the stove's damper."
 
 [=== DESCRIPTION ===]
 
-Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. In the corner, a tall stove of dark-coloured ceramic tile stands against the wall[if the tiled stove is lit], the fire recently lit, the ceramic just beginning to warm[otherwise], cold today, the iron door shut[end if]. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it[if the tweed jacket is on the chair and the homburg is on the chair], your jacket and hat draped over it[otherwise if the tweed jacket is on the chair], your jacket hanging over the back[otherwise if the homburg is on the chair], your hat resting on the seat[end if]. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
+Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. In the corner, a tall stove of cream-coloured ceramic tile stands against the wall[if the tiled stove is lit], the fire is lit, the ceramic feels warm to the touch[otherwise], cold today, the iron door shut[end if]. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it[if the tweed jacket is on the chair and the homburg is on the chair], your jacket and hat draped over it[otherwise if the tweed jacket is on the chair], your jacket hanging over the back[otherwise if the homburg is on the chair], your hat resting on the seat[end if]. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
 Study is east of Foyer.
 
 [=== ITEMS ===]
@@ -141,7 +144,17 @@ The tiled stove is scenery.
 The tiled stove can be lit or unlit.
 The tiled stove is unlit.
 
-The description of the tiled stove is "A tall stove of dark-coloured ceramic, floor to nearly ceiling – the kind built to last a century and doing so without complaint. A small iron door near the base sits shut, its damper [if the tiled stove is unlit]closed[otherwise]open[end if]. [if the tiled stove is unlit]The ceramic is cool to the touch. The stove has not been fired today.[otherwise]The stove is lit, the ceramic beginning to warm. It will hold its heat well into the evening.[end if]"
+The description of the tiled stove is "A tall stove of cream-coloured ceramic, floor to nearly ceiling – the kind built to last a century and doing so without complaint. A small iron door near the base sits shut, its damper [if the tiled stove is unlit]closed[otherwise]open[end if]. [if the tiled stove is unlit]The ceramic is cool to the touch. The stove has not been fired today.[otherwise]The stove is lit, the ceramic beginning to warm. It will hold its heat well into the evening.[end if]"
+
+Instead of burning the tiled stove:
+	if the tiled stove is lit:
+		say "It is already going.";
+	otherwise if the polo lighter is enclosed by the player:
+		now the tiled stove is lit;
+		say "You hold the lighter to the kindling. It catches slowly, then with more confidence. You close the iron door. A faint 
+		smell of coal smoke, and then the stove begins its work.";
+	otherwise:
+		say "You need a flame first."
 
 The polo lighter is a device.
 The polo lighter is switched off.
@@ -155,16 +168,6 @@ Instead of switching on the polo lighter:
 Instead of switching off the polo lighter:
 	now the polo lighter is switched off;
 	say "You press the lift-arm back down. The flame disappears. A thin thread of smoke rises for a moment, then nothing."
-
-Instead of burning the tiled stove:
-	if the tiled stove is lit:
-		say "It is already going.";
-	otherwise if the polo lighter is switched off:
-		say "You'll need a flame first.";
-	otherwise:
-		now the tiled stove is lit;
-		say "You hold the lighter to the kindling. It catches slowly, then with more confidence. You close the iron door. A faint 
-		smell of coal smoke, and then the stove begins its work."
 		
 Before inserting the polo lighter into something 
 when the polo lighter is switched on:
@@ -215,7 +218,7 @@ The description of the chair is "The leather seat is cracked and soft from years
 The tweed jacket is a container.
 The tweed jacket is wearable.
 The tweed jacket is undescribed.
-The carrying capacity of the tweed jacket is 4.
+The carrying capacity of the tweed jacket is 8.
 The description of the tweed jacket is "A well-worn brown tweed jacket, the elbows slightly shiny from years of use."
 Understand "jacket" or "tweed" as the tweed jacket.
 
@@ -238,7 +241,7 @@ Understand "pictures", "picture", "photographs", "frames", "framed" as the wall 
 The description of the group photograph is "A photograph, slightly faded. A group of academics stands before what appears to be a Roman ruin, squinting into the sun. You are somewhere in the back row."
 Understand "group photograph", "group photo", "academics", "faded photograph" as the group photograph.
 
-The description of the small photograph is "A small framed photograph of a young woman. You do not look at it for long. You have gotten quite good at that."
+The description of the small photograph is "A small framed photograph of a young woman. You do not look at it for long."
 Understand "small photograph", "small photo", "woman", "young woman", "framed photograph" as the small photograph.
 
 The description of the engraving is "An old engraving of Toledo, seen from across the Tajo. You bought it at a market in Madrid, years ago, because it was cheap and you had space on the wall. You have walked past it a thousand times without really seeing it.[if the handwritten letter is read] Since Belmonte's letter arrived, you keep finding yourself thinking of it.[end if]"
@@ -383,7 +386,7 @@ Hallway is a room. "A long, narrow hallway running through the heart of the apar
 Section - Kitchen
 
 [=== DESCRIPTION ===]
-Kitchen is a room. "A narrow kitchen smelling faintly of coffee and old wood. A cast-iron stove stands against one wall, its surface scrubbed clean. Wooden cabinets line the walls above a stone sink. A small table with two chairs sits beneath the window, which looks out onto the rear courtyard.[if the handwritten note is on the table] A note is propped against the salt shaker.[end if] [if pantry door is closed]A plain wooden door leads west[otherwise]An open door leads west[end if]. The hallway lies to the south."
+Kitchen is a room. "A narrow kitchen smelling faintly of coffee and old wood. A cast-iron stove stands against one wall, its surface scrubbed clean. Wooden cabinets line the walls above a stone sink. A small table with two chairs sits beneath the window, which looks out onto the rear courtyard.[if the handwritten note is on the kitchen table] A note is propped against the salt shaker.[end if] [if pantry door is closed]A plain wooden door leads west[otherwise]An open door leads west[end if]. The hallway lies to the south."
 Kitchen is north of Hallway.
 The pantry door is west of Kitchen and east of Pantry.
 
@@ -397,7 +400,6 @@ The description of the pantry door is "A plain wooden door, its paint worn at th
 The cast-iron stove is scenery.
 
 The chairs are scenery.
-
 Understand "chair" as the chairs.
 
 The kitchen table is scenery.
@@ -426,7 +428,7 @@ Instead of reading the handwritten note:
 
 [=== ARCHITECTURE ===]
 The kitchen cabinets are in the kitchen.
-The handwritten note is on the table.
+The handwritten note is on the kitchen table.
 
 The cast-iron stove is in the kitchen.
 The kitchen table is in the kitchen.
@@ -473,7 +475,7 @@ The description of the bundle of letters  is "A dozen letters, tied with the sam
 
 The Luger is undescribed.
 The Luger is wearable.
-The description of the Luger is "A Luger P08, kept clean and loaded. The initials stamped into the grip are scratched out. You have carried it since Zurich, three years ago, when it still seemed like things might not come to this. They have come to this."
+The description of the Luger is "A Luger P08, kept clean and loaded. The initials stamped into the grip are scratched out."
 Understand "gun", "pistol", "luger" as the Luger.
 
 [=== ARCHITECTURE ===]
