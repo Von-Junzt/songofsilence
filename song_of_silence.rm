@@ -1,9 +1,27 @@
 "Song of Silence" by Nils Prior
+Book - Global Settings
+
+Chapter - Player Settings
+
+[=== PLAYER SETTINGS ===]
+The carrying capacity of the player is 4.
+
+Chapter - Kinds + Properties
 
 [=== KINDS & PROPERTIES ===]
 
+Chapter - Actions and corresponding rules
 
-[=== GLOBAL ACTIONS ===]
+[=== GLOBAL ACTIONS AND RULES===]
+
+Section - Igniting
+
+Igniting it with is an action applying to two things.
+Understand "burn [something] with [something]" as igniting it with.
+Understand "light [something] with [something]" as igniting it with.
+
+Section - Knocking
+
 Knocking on is an action applying to one thing.
 Understand "knock on [something]" or "knock [something]" as knocking on.
 
@@ -13,23 +31,46 @@ Instead of knocking on a door:
 Instead of knocking on something:
 	say "That's not something you'd knock on."
 
-Ringing is an action applaying to one thing.
+Section - Ringing
+
+Ringing is an action applying to one thing.
 Understand "ring [something]" as ringing.
 
 Instead of ringing something:
 	say "That's not something you'd ring."
 
+Section - Lighting
+
 Understand "light [something]" as burning.
+
+Section - Reading
 
 Understand the command "read" as something new.
 
 Reading is an action applying to one thing.
 Understand "read [something]" as reading.
 
+A thing can be read or unread. A thing is usually unread.
+
 Before reading something:
 	if the noun is in a container and the noun is not carried by the player:
+		if the holder of the noun is closed:
+			say "That's inside [the holder of the noun]." instead;
 		say "[italic type](You take [the noun] out of [the holder of the noun].)[roman type][line break]";
-		now the noun is carried by the player.
+		now the noun is carried by the player;
+	now the noun is read.
+
+Chapter - Item Rules
+
+[=== ITEM RULES ===]
+
+Section - Polo Lighter
+
+Before inserting the polo lighter into something 
+when the polo lighter is switched on:
+	now the polo lighter is switched off;
+	say "You press the arm down before pocketing the lighter. 
+	A close thing.[line break]"
 
 [=== WORLD ===]
 
@@ -86,7 +127,7 @@ fireSoundSnippet(text)
 
 [=== DESCRIPTION ===]
 
-Study is a room. "Study is a room. Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall[if the fireplace is lit], a fire crackling quietly in the grate[otherwise], its grate neatly laid with logs and kindling[end if]. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
+Study is a room. "Study is a room. Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall[if the fireplace is lit], a fire crackling quietly in the grate[otherwise], its grate neatly laid with logs and kindling[end if]. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it[if the tweed jacket is on the chair and the homburg is on the chair], your jacket and hat draped over it[otherwise if the tweed jacket is on the chair], your jacket hanging over the back[otherwise if the homburg is on the chair], your hat resting on the seat[end if]. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
 Study is east of Foyer.
 
 [=== ITEMS ===]
@@ -95,12 +136,25 @@ The fireplace is undescribed.
 The fireplace is either lit or unlit. The fireplace is unlit.
 The description of the fireplace is "[if the fireplace is lit]A small fire crackles softly on a bed of logs, the stones around it blackened by years of use. A metal fireguard stands before the opening, catching sparks before they reach the floorboards.[otherwise]A neat arrangement of logs and kindling in the grate, ready to be lit.[end if][if lighter is on fireplace] A lighter rests on the mantelpiece above.[end if]"
 
-The lighter is undescribed.
-The description of the lighter is "A plain metal lighter, well-used."
-Understand "lighter" or "light" as the lighter.
+Understand "fire" as fireplace.
+
+The polo lighter is a device.
+The polo lighter is switched off.
+The polo lighter is undescribed.
+The description of the polo lighter is "A POLO petrol lighter, made in England – nickel-plated brass, worn smooth at the edges from years of handling. A small horse is stamped into the base. [if polo lighter is switched on]The wick burns with a small, steady flame, faintly blue at  its base.[otherwise]The lift-arm rests flat against the casing. The faint smell of naphtha clings to it.[end if]"
+
+Instead of switching on the polo lighter:
+	now the polo lighter is switched on;
+	say "You press your thumb against the lift-arm and flip it upward. The flint wheel catches on the second strike, and a small flame rises from the wick – steady, faintly blue at its base. The smell of naphtha, sharp and familiar."
+
+Instead of switching off the polo lighter:
+	now the polo lighter is switched off;
+	say "You press the lift-arm back down. The flame disappears. A thin thread of smoke rises for a moment, then nothing."
 
 Instead of burning the fireplace:
-	if the player carries the lighter:
+	if the fireplace is lit:
+		say "The fire is already burning.";
+	otherwise if the player carries the lighter:
 		now the fireplace is lit;
 		say "You touch the lighter to the kindling. The fire catches quickly, and the room settles into a familiar warmth. You watch it for a moment before turning back to your work.";
 	otherwise:
@@ -124,7 +178,10 @@ The description of the red wax seal is "[if paper envelope is closed]A thick red
 
 The description of the handwritten letter is "Written in ink with a delicate handwriting. You notice dots of ink on several letters where the writer seems to have paused for a moment."
 
+The handwritten letter can be read or unread. The handwritten letter is unread.
+
 Instead of reading the handwritten letter:
+	now the handwritten letter is read;
 	say "[italic type]Toledo, 5th October 1938[paragraph break]Dear friend,[paragraph break]I hope this letter finds you well. I write to you in your capacity as a scholar of medieval German texts -- I have come across something in the cathedral archive here that I believe would interest you considerably.[paragraph break]Among the documents I have been cataloguing, I found a manuscript I cannot yet date with precision, though it appears to be from the early thirteenth century. It is written in Middle High German, by a monk from Regensburg, and it describes an incident at the ford of the Tagus river -- unusual in content, historically significant, and in certain details quite unlike anything I have encountered before. I would prefer to discuss it in person rather than commit the details to a letter.[paragraph break]I should also mention that I have a personal reason for wanting to speak with someone I trust. There is a matter from 1936 -- something I witnessed during the siege here -- which I have never spoken of to anyone. I find myself thinking of it again.[paragraph break]If you can arrange to come to Toledo, I would be most grateful. Ask for me at the cathedral. I will explain everything when you arrive.[paragraph break]With collegial regards,[line break]Arturo Belmonte[roman type][paragraph break][italic type]P.S. Toledo is not quite what it was. You will understand when you arrive.[line break][roman type]"
 
 The old clock is scenery.
@@ -145,6 +202,7 @@ The description of the chair is "The leather seat is cracked and soft from years
 The tweed jacket is a container.
 The tweed jacket is wearable.
 The tweed jacket is undescribed.
+The carrying capacity of the tweed jacket is 4.
 The description of the tweed jacket is "A well-worn brown tweed jacket, the elbows slightly shiny from years of use."
 Understand "jacket" or "tweed" as the tweed jacket.
 
@@ -154,8 +212,12 @@ The description of the homburg hat is "A dark grey homburg, brushed clean and we
 Understand "hat" or "homburg" as the homburg.
 
 The pocket calendar is undescribed.
-The description of the pocket calendar is "A small leather-bound pocket calendar. The current date is marked: October 14th, 1938."
+The description of the pocket calendar is "October 14th, 1938. You have stopped marking anything beyond the date itself. There was a time when the pages were full – meetings, lectures, deadlines. Now the only thing worth noting is whether it is still safe to be here. So far, yes. You put the calendar back."
 Understand "calendar" or "pocket calendar" or "notebook" as the pocket calendar.
+
+The university card is undescribed.
+The description of the university card is "Your faculty card from the University of Munich. Your name, your department, your photograph. It expired in 1935."
+Understand "card" or "university card" or "faculty card" or "ausweis" as the university card.
 
 The description of the wall pictures is "A group photograph, slightly faded, hangs beside the door. Next to it, a small framed photograph of a young woman. Above the fireplace, an old engraving of Toledo."
 Understand "pictures", "picture", "photographs", "frames", "framed" as the wall pictures.
@@ -163,10 +225,11 @@ Understand "pictures", "picture", "photographs", "frames", "framed" as the wall 
 The description of the group photograph is "A photograph, slightly faded. A group of academics stands before what appears to be a Roman ruin, squinting into the sun. You are somewhere in the back row."
 Understand "group photograph", "group photo", "academics", "faded photograph" as the group photograph.
 
-The description of the small photograph is "A small framed photograph of a young woman. You do not look at it for long."
+The description of the small photograph is "A small framed photograph of a young woman. You do not look at it for long. You have gotten quite good at that."
 Understand "small photograph", "small photo", "woman", "young woman", "framed photograph" as the small photograph.
 
-The description of the engraving is "An old engraving of Toledo, seen from across the Tajo. The city looks much as it must have looked for centuries."
+The description of the engraving is "An old engraving of Toledo, seen from across the Tajo. You bought it at a market in Madrid, years ago, because it was cheap and you had space on the wall. You have walked past it a thousand times without really seeing it.[if the handwritten letter is read]Since Belmonte's letter arrived, you keep finding yourself thinking of it.[end if]"
+
 Understand "engraving", "Toledo", "old engraving" as the engraving.
 
 The bookshelf is an open container.
@@ -183,6 +246,9 @@ The Dozy is proper-named.
 The printed name of the Caesarius is "Dialogus Miraculorum".
 The description of the Caesarius is "Caesarius von Heisterbach's Dialogus Miraculorum, a collection of medieval miracle stories. A bookmark sits somewhere in the middle."
 The Caesarius is proper-named.
+
+Instead of reading the Caesarius:
+	say "The bookmark sits in the distinction on visions – accounts of the dying who heard something, before the end. You cannot remember now why you marked it. You close it again."
 
 The printed name of the Baedeker is "Spanien und Portugal".
 The description of the Baedeker is "Karl Baedeker's Spanien und Portugal. The spine is cracked from repeated use. Toledo has several pages marked."
@@ -211,7 +277,7 @@ Every turn when the player is in the Study:
 			choose a random row in the Table of FireplaceSounds;
 			say "[fireSoundSnippet entry][line break]";
 	if the remainder after dividing the turn count by 3 is 0:
-		say "[one of]Tick. Tock.[or]The clock marks another minute.[or]The clock's pendulum swings, unhurried.[or]The clock ticks on, indifferent.[or]A soft click from the grandfather clock.[cycling][line break]"
+		say "[one of]The clock marks another minute.[or]The clock's pendulum swings, unhurried.[or]The clock ticks on, indifferent.[or]A soft click from the grandfather clock.[cycling][line break]"
 		
 [=== ARCHITECTURE ===]
 The wall pictures are scenery in the Study.
@@ -221,14 +287,15 @@ The engraving is scenery in the Study.
 The study-window is scenery in the Study.
 
 The fireplace is in the Study.
-The lighter is on the fireplace.
+The polo lighter is on the fireplace.
 The old clock is in the Study.
 The wooden desk is in the Study.
 The chair is in the Study.
 The tweed jacket is on the chair.
+The pocket calendar is in the tweed jacket.
+The university card is in the tweed jacket.
 The fountain pen is on the wooden desk.
 The homburg is on the chair.
-The pocket calendar is in the tweed jacket.
 The paper envelope is on the wooden desk.
 The handwritten letter is in the paper envelope.
 
@@ -246,6 +313,7 @@ The Foyer is south of Hallway.
 The front door is a door.
 The front door is unlocked.
 The front door is scenery.
+The description of the front door is "A heavy door, its upper half frosted glass."
 
 [=== ARCHITECTURE ===]
 The front door is south of the Foyer and north of the Stairwell
@@ -307,7 +375,7 @@ Instead of searching the kitchen cabinets:
 The handwritten note is undescribed.
 The description of the handwritten note is "A receipt from the Viktualienmarkt, turned over. On the back, a few lines in a neat, economical hand."
 Instead of reading the handwritten note:
-	say "Der Herr von nebenan hat wieder nach Ihnen gefragt. Ich habe gesagt, Sie sind beschäftigt. Die Post liegt auf Ihrem Schreibtisch. Bin morgen früh wieder da. – F.[line break][italic type](The gentleman next door has been asking for you again. I told him you were busy. The post is on your desk. Back tomorrow morning. – F.)[roman type]"
+	say "Der Herr von nebenan hat wieder nach Ihnen gefragt. Ich habe gesagt, Sie sind beschäftigt. Die Post liegt auf Ihrem Schreibtisch. Bin morgen früh wieder da. – F.[line break][italic type](The gentleman next door has been asking for you again. I told him you were busy. The post is on your desk. Back tomorrow morning. – F.)[roman type][line break]Wimmer. You already know exactly how it will go: he will stand in the doorway for forty-five minutes explaining why the Romans stole their calendar from a civilisation that modern scholarship refuses to acknowledge, and somewhere in the middle of it he will say something that almost makes sense, and you will lose the thread of whatever you were thinking about before he knocked."
 
 [=== ARCHITECTURE ===]
 The kitchen cabinets are in the kitchen.
@@ -315,7 +383,7 @@ The handwritten note is in the kitchen.
 
 Section - Pantry
 
-Pantry is a room. "A small, cool pantry, its shelves lined with preserves and dry goods. A faint smell of must and vinegar. The single high window, fitted with an iron grille, lets in little light. The kitchen lies to the east."
+Pantry is a room. "A small, cool pantry, its shelves lined with preserves and dry goods. A faint smell of must and vinegar. The single high window, fitted with an iron grille, lets in little light.[if the loose floorboard is open] One of the floorboards lies lifted, a dark gap beneath it.[end if] The kitchen lies to the east."
 
 [=== ITEMS ===]
 The description of the pantry shelves is "Rows of preserves and dry goods, neatly arranged. One of the shelves sits slightly uneven."
@@ -345,14 +413,16 @@ After opening the cloth bundle:
 	say "You unwrap the bundle. Inside: a few letters, a worn copy of the Neue Vorwärts, and the Luger in its oilcloth."
 
 The Neue Vorwärts is undescribed.
-The description of the Neue Vorwärts is "A magazine."
+The description of the Neue Vorwärts is "A ... magazine."
+Instead of reading the Neue Vorwärts:
+	say "Exile voices, printed on cheap paper and smuggled across a border that keeps moving. You have read this issue already. You keep it anyway. At this point it is less about the articles than about the principle."
 
 The bundle of letters is undescribed.
-The description of the bundle of letters  is "The kind of letters you keep not because you should, but because you cannot bring yourself to burn them.".
+The description of the bundle of letters  is "A dozen letters, tied with the same piece of string for longer than is sensible. You know every name on every envelope. Some of those people have left the country. Some have not. You do not untie them."
 
 The Luger is undescribed.
 The Luger is wearable.
-The description of the Luger is "A Luger P08, kept clean and loaded. The initials stamped into the grip are scratched out."
+The description of the Luger is "A Luger P08, kept clean and loaded. The initials stamped into the grip are scratched out. You have carried it since Zurich, three years ago, when it still seemed like things might not come to this. They have come to this."
 Understand "gun", "pistol", "luger" as the Luger.
 
 [=== ARCHITECTURE ===]
@@ -378,30 +448,35 @@ Section - Bedroom
 Bedroom is a room. "A quiet, orderly bedroom. A heavy wardrobe dominates one wall, its dark wood polished to a dull shine. The bed is neatly made, a single pillow at its head. On the nightstand, a small lamp and a well-worn paperback. A suitcase sits beneath the bed, just visible in the shadow. A window overlooks the rear courtyard. The hallway lies to the east."
 Bedroom is west of Hallway.
 
+Chapter - Building
+
 Section - Stairwell
 
 Stairwell is a room. "..."
 
 [=== ITEMS ===]
-The bell is scenery.
-The description of the bell is "A little plastic knob on a brass metal plate. There is a name engraved on it: 'Mueller'"
+The doorbell is scenery.
+The description of the doorbell is "A small brass button set into a plate beside the door, the enamel worn at the center from years of use. There is a name engraved on it: 'Wimmer'"
 
-Instead of ringing the bell:
-	say: "Ring, ring"
+Understand "bell" as the doorbell.
 
 The door across the hall is a door.
 The door across the hall is locked.
 The door across the hall is scenery.
+The description of the door across the hall is "A heavy door, its upper half frosted glass. It looks the same as your apartment door."
 
-Instead of knocking on the door across the hall:
-	say "You knock. A pause. Then nothing."
+Instead of ringing the doorbell:
+	say "A harsh electric buzz sounds somewhere inside the apartment. Then nothing."
 
 [=== ARCHITECTURE ===]
 The door across the hall is west of Stairwell and east of Neighbor's Apartment.
+The doorbell is in the Stairwell.
 
 Section - Neighbor's Apartment
 
 Neighbor's Apartment is a room.
+
+Chapter - Out in Munich
 
 Section - The Street
 
@@ -412,4 +487,8 @@ Section - Tram Station
 
 Tram station is a room. "..."
 Tram Station is east of The Street.
+
+Section - University Campus
+
+Section - Library
 
