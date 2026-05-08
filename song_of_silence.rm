@@ -4,6 +4,8 @@
 
 
 [=== GLOBAL ACTIONS ===]
+Understand "light [something]" as burning.
+
 Understand the command "read" as something new.
 
 Reading is an action applying to one thing.
@@ -69,13 +71,25 @@ fireSoundSnippet(text)
 
 [=== DESCRIPTION ===]
 
-Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall, a fire crackling quietly in the grate. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
+Study is a room. "Study is a room. Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall[if the fireplace is lit], a fire crackling quietly in the grate[otherwise], its grate neatly laid with logs and kindling[end if]. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
 Study is east of Foyer.
 
 [=== ITEMS ===]
 
 The fireplace is undescribed.
-The description of the fireplace is "A small fire crackles softly on a bed of logs, the stones around it blackened by years of use. A metal fireguard stands before the opening, catching sparks before they reach the floorboards."
+The fireplace is either lit or unlit. The fireplace is unlit.
+The description of the fireplace is "[if the fireplace is lit]A small fire crackles softly on a bed of logs, the stones around it blackened by years of use. A metal fireguard stands before the opening, catching sparks before they reach the floorboards.[otherwise]A neat arrangement of logs and kindling in the grate, ready to be lit.[end if][if lighter is on fireplace] A lighter rests on the mantelpiece above.[end if]"
+
+The lighter is undescribed.
+The description of the lighter is "A plain metal lighter, well-used."
+Understand "lighter" or "light" as the lighter.
+
+Instead of burning the fireplace:
+	if the player carries the lighter:
+		now the fireplace is lit;
+		say "You touch the lighter to the kindling. The fire catches quickly, and the room settles into a familiar warmth. You watch it for a moment before turning back to your work.";
+	otherwise:
+		say "You would need something to light it with."
 
 The paper envelope is an openable container.
 The paper envelope is closed.
@@ -177,11 +191,12 @@ The description of the study-window is "A double-casement window with a wooden f
 
 [=== SOUNDS ===]
 Every turn when the player is in the Study:
-	if a random chance of 1 in 4 succeeds:
-		choose a random row in the Table of FireplaceSounds;
-		say "[fireSoundSnippet entry][line break]";
+	if the fireplace is lit:
+		if a random chance of 1 in 4 succeeds:
+			choose a random row in the Table of FireplaceSounds;
+			say "[fireSoundSnippet entry][line break]";
 	if the remainder after dividing the turn count by 3 is 0:
-		say "[one of]The clock marks another minute.[or]The clock's pendulum swings, unhurried.[or]The clock ticks on, indifferent.[or]A soft click from the grandfather clock.[cycling][line break]"
+		say "[one of]Tick. Tock.[or]The clock marks another minute.[or]The clock's pendulum swings, unhurried.[or]The clock ticks on, indifferent.[or]A soft click from the grandfather clock.[cycling][line break]"
 		
 [=== ARCHITECTURE ===]
 The wall pictures are scenery in the Study.
@@ -191,6 +206,7 @@ The engraving is scenery in the Study.
 The study-window is scenery in the Study.
 
 The fireplace is in the Study.
+The lighter is on the fireplace.
 The old clock is in the Study.
 The wooden desk is in the Study.
 The chair is in the Study.
@@ -249,7 +265,7 @@ Kitchen is north of Hallway.
 The handwritten note is undescribed.
 The description of the handwritten note is "A receipt from the Viktualienmarkt, turned over. On the back, a few lines in a neat, economical hand."
 Instead of reading the handwritten note:
-	say "Der Herr von nebenan hat wieder nach Ihnen gefragt. Ich habe gesagt, Sie sind beschäftigt. Bin morgen früh wieder da. – F.  [line break][italic type](The gentleman next door has been asking for you again. I told him you were busy. Back tomorrow morning. – F.)[roman type]"
+	say "Der Herr von nebenan hat wieder nach Ihnen gefragt. Ich habe gesagt, Sie sind beschäftigt. Die Post liegt auf Ihrem Schreibtisch. Bin morgen früh wieder da. – F.[line break][italic type](The gentleman next door has been asking for you again. I told him you were busy. The post is on your desk. Back tomorrow morning. – F.)[roman type]"
 
 [=== ARCHITECTURE ===]
 The handwritten note is in the kitchen.
@@ -322,7 +338,6 @@ Section - Bedroom
 
 Bedroom is a room. "A quiet, orderly bedroom. A heavy wardrobe dominates one wall, its dark wood polished to a dull shine. The bed is neatly made, a single pillow at its head. On the nightstand, a small lamp and a well-worn paperback. A suitcase sits beneath the bed, just visible in the shadow. A window overlooks the rear courtyard. The hallway lies to the east."
 Bedroom is west of Hallway.
-
 
 
 
