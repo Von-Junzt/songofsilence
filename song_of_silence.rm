@@ -4,6 +4,21 @@
 
 
 [=== GLOBAL ACTIONS ===]
+Knocking on is an action applying to one thing.
+Understand "knock on [something]" or "knock [something]" as knocking on.
+
+Instead of knocking on a door:
+	say "You knock, but there is no answer."
+
+Instead of knocking on something:
+	say "That's not something you'd knock on."
+
+Ringing is an action applaying to one thing.
+Understand "ring [something]" as ringing.
+
+Instead of ringing something:
+	say "That's not something you'd ring."
+
 Understand "light [something]" as burning.
 
 Understand the command "read" as something new.
@@ -368,10 +383,18 @@ Section - Stairwell
 Stairwell is a room. "..."
 
 [=== ITEMS ===]
+The bell is scenery.
+The description of the bell is "A little plastic knob on a brass metal plate. There is a name engraved on it: 'Mueller'"
+
+Instead of ringing the bell:
+	say: "Ring, ring"
 
 The door across the hall is a door.
 The door across the hall is locked.
 The door across the hall is scenery.
+
+Instead of knocking on the door across the hall:
+	say "You knock. A pause. Then nothing."
 
 [=== ARCHITECTURE ===]
 The door across the hall is west of Stairwell and east of Neighbor's Apartment.
