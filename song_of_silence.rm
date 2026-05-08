@@ -20,7 +20,39 @@ Book - Introduction
 
 Chapter - Apartment
 
-[=== APARTMENT MAP ===]
+Section - Apartment Variables
+
+[=== APARTMENT (STUDY, HALLWAY, FOYER, BATHROOM, BEDROOM, KITCHEN, DININGROOM, PANTRY ===]
+
+[=== APARTMENT SCOPE VARIABLES ===]
+Table of StreetSounds
+streetSoundSnippet(text)
+"From the street below, the sound of footsteps on cobblestones."
+"A car passes in the street, its engine fading into the distance."
+"The distant sound of a tram."
+"The distant sound of a church bell."
+"A child's voice from the street below, then silence."
+"The wind moves through the street outside."
+
+Table of StaircaseSounds
+staircaseSoundSnippet(text)
+"From the staircase, the creak of a floorboard."
+"Footsteps on the stairs, then silence."
+"Muffled voices from the staircase, too quiet to make out."
+"A neighbour's door, somewhere above."
+"A distant door, somewhere in the building."
+"Someone passes in the stairwell without stopping."
+
+[=== APARTMENT SOUNDS ===]
+Every turn when the player is not in the Study and the player is not in the Foyer and the player is not in the Hallway:
+	if a random chance of 1 in 5 succeeds:
+		choose a random row in the Table of StreetSounds;
+		say "[streetSoundSnippet entry][line break]"
+		
+Every turn when the player is in the Foyer:
+	if a random chance of 1 in 4 succeeds:
+		choose a random row in the Table of StaircaseSounds;
+		say "[staircaseSoundSnippet entry][line break]"
 
 Section - Study
 
@@ -37,7 +69,7 @@ fireSoundSnippet(text)
 
 [=== DESCRIPTION ===]
 
-Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall, a fire crackling quietly in the grate. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it. To your right, a tall grandfather clock stands against the wall, its steady tick is filling the room like a second heartbeat. On the walls hang several framed pictures. A door leads west to the foyer."
+Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall, a fire crackling quietly in the grate. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
 Study is east of Foyer.
 
 [=== ITEMS ===]
@@ -52,7 +84,7 @@ The description of the envelope is "The envelope is made from coarse, heavy pape
 
 Instead of opening the paper envelope:
 now the paper envelope is open;
-say "You break the wax seal on the envelope and open it. Inside you see a handwritten letter"
+say "You break the wax seal on the envelope and open it. Inside you see a handwritten letter[line break]"
 
 Check closing the paper envelope:
 say "[if paper envelope is open]The wax seal is broken and the heavy paper is too stiff to stay shut on its own.[otherwise]The envelope is already closed. In fact, an unbroken wax seal indicates it has not been openend yet." instead.
@@ -64,10 +96,10 @@ The description of the red wax seal is "[if paper envelope is closed]A thick red
 The description of the handwritten letter is "Written in ink with a delicate handwriting. You notice dots of ink on several letters where the writer seems to have paused for a moment."
 
 Instead of reading the handwritten letter:
-	say "[italic type]Toledo, 5th October 1938[paragraph break]Dear friend,[paragraph break]I hope this letter finds you well. I write to you in your capacity as a scholar of medieval German texts -- I have come across something in the cathedral archive here that I believe would interest you considerably.[paragraph break]Among the documents I have been cataloguing, I found a manuscript I cannot yet date with precision, though it appears to be from the early thirteenth century. It is written in Middle High German, by a monk from Regensburg, and it describes an incident at the ford of the Tagus river -- unusual in content, historically significant, and in certain details quite unlike anything I have encountered before. I would prefer to discuss it in person rather than commit the details to a letter.[paragraph break]I should also mention that I have a personal reason for wanting to speak with someone I trust. There is a matter from 1936 -- something I witnessed during the siege here -- which I have never spoken of to anyone. I find myself thinking of it again.[paragraph break]If you can arrange to come to Toledo, I would be most grateful. Ask for me at the cathedral. I will explain everything when you arrive.[paragraph break]With collegial regards,[line break]Arturo Belmonte[roman type][paragraph break][italic type]P.S. Toledo is not quite what it was. You will understand when you arrive.[roman type]"
+	say "[italic type]Toledo, 5th October 1938[paragraph break]Dear friend,[paragraph break]I hope this letter finds you well. I write to you in your capacity as a scholar of medieval German texts -- I have come across something in the cathedral archive here that I believe would interest you considerably.[paragraph break]Among the documents I have been cataloguing, I found a manuscript I cannot yet date with precision, though it appears to be from the early thirteenth century. It is written in Middle High German, by a monk from Regensburg, and it describes an incident at the ford of the Tagus river -- unusual in content, historically significant, and in certain details quite unlike anything I have encountered before. I would prefer to discuss it in person rather than commit the details to a letter.[paragraph break]I should also mention that I have a personal reason for wanting to speak with someone I trust. There is a matter from 1936 -- something I witnessed during the siege here -- which I have never spoken of to anyone. I find myself thinking of it again.[paragraph break]If you can arrange to come to Toledo, I would be most grateful. Ask for me at the cathedral. I will explain everything when you arrive.[paragraph break]With collegial regards,[line break]Arturo Belmonte[roman type][paragraph break][italic type]P.S. Toledo is not quite what it was. You will understand when you arrive.[line break][roman type]"
 
 The old clock is undescribed.
-The description of the old clock is "Behind the glass panel, a brass pendulum swings in long, unhurried arcs – patient, indifferent, as it has always been."
+The description of the old clock is "Behind the glass panel, a brass pendulum swings in long, unhurried arcs – patient, indifferent, as it has always been. The hands show a quarter past six."
 
 The wooden desk is a supporter.
 It is undescribed.
@@ -249,24 +281,30 @@ The cloth bundle is openable.
 The cloth bundle is closed.
 The cloth bundle is undescribed.
 The description of the cloth bundle is "A cloth bundle containing a few letters bound with string – old ones, by the look of them, the ink faded. The kind you keep not because you should, but because you cannot bring yourself to burn them. A worn copy of the Neue Vorwärts. And the Luger."
-[=== After bundle has been opened, items are in inventory, bundle is nowhere ===]
+
+After opening the cloth bundle:
+	now the Luger is carried by the player;
+	now the Neue Vorwärts is carried by the player;
+	now the bundle of letters is carried by the player;
+	now the cloth bundle is nowhere;
+	say "You unwrap the bundle. Inside: a few letters, a worn copy of the Neue Vorwärts, and the Luger in its oilcloth."
 
 The Neue Vorwärts is undescribed.
 The description of the Neue Vorwärts is "A magazine."
 
 The bundle of letters is undescribed.
-The description of the bundle of letters  is "...".
+The description of the bundle of letters  is "The kind of letters you keep not because you should, but because you cannot bring yourself to burn them.".
 
 The Luger is undescribed.
 The Luger is wearable.
-The description of the Luger is "A Luger P08, kept clean and loaded. The initials stamped into the grip are not your own."
+The description of the Luger is "A Luger P08, kept clean and loaded. The initials stamped into the grip are scratched out."
 Understand "gun", "pistol", "luger" as the Luger.
 
 [=== ARCHITECTURE ===]
 The cloth bundle is in the loose floorboard.
 The Neue Vorwärts is in the cloth bundle.
-The bundle of letters
-The Luger is in the hidden bundle.
+The bundle of letters is in the cloth bundle.
+The Luger is in the cloth bundle.
 
 The pantry shelves are scenery in the Pantry.
 The loose floorboard is scenery in the Pantry.
@@ -277,12 +315,12 @@ Instead of opening the loose floorboard:
 
 Section - Dining Room
 
-Dining Room is a room. "A formal dining room that sees little use. A large table surrounded by six chairs dominates the room, its surface bare and polished. A heavy sideboard stands against one wall, its glass doors displaying china that is rarely taken out. A lamp hangs low over the table, unlit. The hallway lies to the southwest."
+Dining Room is a room. "A formal dining room that sees little use. A large table surrounded by six chairs dominates the room, its surface bare and polished. A heavy sideboard stands against one wall, its glass doors displaying china that is rarely taken out. A lamp hangs low over the table, unlit. A window faces the street below. The hallway lies to the west."
 Dining Room is east of Hallway.
 
 Section - Bedroom
 
-Bedroom is a room. "A quiet, orderly bedroom. A heavy wardrobe dominates one wall, its dark wood polished to a dull shine. The bed is neatly made, a single pillow at its head. On the nightstand, a small lamp and a well-worn paperback. A suitcase sits beneath the bed, just visible in the shadow. The hallway lies to the east."
+Bedroom is a room. "A quiet, orderly bedroom. A heavy wardrobe dominates one wall, its dark wood polished to a dull shine. The bed is neatly made, a single pillow at its head. On the nightstand, a small lamp and a well-worn paperback. A suitcase sits beneath the bed, just visible in the shadow. A window overlooks the rear courtyard. The hallway lies to the east."
 Bedroom is west of Hallway.
 
 
