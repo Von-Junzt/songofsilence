@@ -3,19 +3,20 @@ Book - Global Settings
 
 Chapter - Player Settings
 
-[=== PLAYER SETTINGS ===]
-
 Section - Carrying Capacity
 
 The carrying capacity of the player is 4.
 
 Chapter - Kinds + Properties
 
-[=== KINDS & PROPERTIES ===]
+Section - Document
+
+A document is a kind of thing. 
+A document can be read or unread. 
+A document is usually unread.
 
 Chapter - Actions and corresponding rules
 
-[=== GLOBAL ACTIONS AND RULES===]
 
 Section - Igniting
 
@@ -69,6 +70,21 @@ Chapter - Item Rules
 
 Book - Introduction
 
+Include Basic Screen Effects by Emily Short.
+
+Rule for printing the banner text: do nothing.
+
+When play begins:
+	clear the screen;
+	say "[line break][line break][line break]";
+	center "Outside, Munich is still celebrating.";
+	center "The flags have been up since the Agreement.";
+	center "Two weeks now. No one has taken them down.";
+	say "[line break]";
+	center "[italic type]Press any key.[roman type]";
+wait for any key;
+	clear the screen;
+
 Chapter - Apartment
 
 Section - Apartment Variables
@@ -106,28 +122,26 @@ Every turn when the player is in the Foyer:
 Section - Study
 
 [=== LOCAL VARIABLES ===]
-Table of FireplaceSounds
-fireSoundSnippet(text)
-"In the fireplace the logs crackle softly."
-"A few sparks fly up the chimney."
-"From the fireplace you hear soft hisses and pops."
-"The flames lick slowly at the logs."
-"A small log shifts with a soft thud."
-"The fire pops, sending a glow across the walls."
-"In the fireplace the embers glow a deep, steady red."
+Table of TiledStoveSounds
+stoveSoundSnippet(text)
+"A low drone from behind the iron door – the fire drawing well."
+"The ceramic ticks as it expands with the heat."
+"A muffled shift from inside the stove. The coals settling."
+"The stove breathes steadily behind its door."
+"A soft knock from the metal inside – nothing to worry about."
+"The draft pulls quietly through the damper."
 
 [=== DESCRIPTION ===]
 
-Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. Opposite the door, a brick fireplace dominates the wall[if the fireplace is lit], a fire crackling quietly in the grate[otherwise], its grate neatly laid with logs and kindling[end if]. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it[if the tweed jacket is on the chair and the homburg is on the chair], your jacket and hat draped over it[otherwise if the tweed jacket is on the chair], your jacket hanging over the back[otherwise if the homburg is on the chair], your hat resting on the seat[end if]. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
+Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. In the corner, a tall stove of dark-coloured ceramic tile stands against the wall[if the tiled stove is lit], the fire recently lit, the ceramic just beginning to warm[otherwise], cold today, the iron door shut[end if]. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it[if the tweed jacket is on the chair and the homburg is on the chair], your jacket and hat draped over it[otherwise if the tweed jacket is on the chair], your jacket hanging over the back[otherwise if the homburg is on the chair], your hat resting on the seat[end if]. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
 Study is east of Foyer.
 
 [=== ITEMS ===]
+The tiled stove is scenery.
+The tiled stove can be lit or unlit.
+The tiled stove is unlit.
 
-The fireplace is undescribed.
-The fireplace is either lit or unlit. The fireplace is unlit.
-The description of the fireplace is "[if the fireplace is lit]A small fire crackles softly on a bed of logs, the stones around it blackened by years of use. A metal fireguard stands before the opening, catching sparks before they reach the floorboards.[otherwise]A neat arrangement of logs and kindling in the grate, ready to be lit.[end if][if lighter is on fireplace] A lighter rests on the mantelpiece above.[end if]"
-
-Understand "fire" as fireplace.
+The description of the tiled stove is "A tall stove of dark-coloured ceramic, floor to nearly ceiling – the kind built to last a century and doing so without complaint. A small iron door near the base sits shut, its damper [if the tiled stove is unlit]closed[otherwise]open[end if]. [if the tiled stove is unlit]The ceramic is cool to the touch. The stove has not been fired today.[otherwise]The stove is lit, the ceramic beginning to warm. It will hold its heat well into the evening.[end if]"
 
 The polo lighter is a device.
 The polo lighter is switched off.
@@ -142,14 +156,15 @@ Instead of switching off the polo lighter:
 	now the polo lighter is switched off;
 	say "You press the lift-arm back down. The flame disappears. A thin thread of smoke rises for a moment, then nothing."
 
-Instead of burning the fireplace:
-	if the fireplace is lit:
-		say "The fire is already burning.";
-	otherwise if the player carries the lighter:
-		now the fireplace is lit;
-		say "You touch the lighter to the kindling. The fire catches quickly, and the room settles into a familiar warmth. You watch it for a moment before turning back to your work.";
+Instead of burning the tiled stove:
+	if the tiled stove is lit:
+		say "It is already going.";
+	otherwise if the polo lighter is switched off:
+		say "You'll need a flame first.";
 	otherwise:
-		say "You would need something to light it with."
+		now the tiled stove is lit;
+		say "You hold the lighter to the kindling. It catches slowly, then with more confidence. You close the iron door. A faint 
+		smell of coal smoke, and then the stove begins its work."
 		
 Before inserting the polo lighter into something 
 when the polo lighter is switched on:
@@ -173,6 +188,7 @@ The red wax seal is part of the paper envelope.
 The red wax seal is undescribed.
 The description of the red wax seal is "[if paper envelope is closed]A thick red wax seal bearing a personal signet – the initials A.B. set beneath a small heraldic device.[otherwise]The red wax seal on the envelope is broken.[end if]"
 
+The handwritten letter is a document.
 The description of the handwritten letter is "Written in ink with a delicate handwriting. You notice dots of ink on several letters where the writer seems to have paused for a moment."
 
 The handwritten letter can be read or unread. The handwritten letter is unread.
@@ -216,7 +232,7 @@ The university card is undescribed.
 The description of the university card is "Your faculty card from the University of Munich. Your name, your department, your photograph. It expired in 1935."
 Understand "card" or "university card" or "faculty card" or "ausweis" as the university card.
 
-The description of the wall pictures is "A group photograph, slightly faded, hangs beside the door. Next to it, a small framed photograph of a young woman. Above the fireplace, an old engraving of Toledo."
+The description of the wall pictures is "A group photograph, slightly faded, hangs beside the door. Next to it, a small framed photograph of a young woman. Above the stove, an old engraving of Toledo."
 Understand "pictures", "picture", "photographs", "frames", "framed" as the wall pictures.
 
 The description of the group photograph is "A photograph, slightly faded. A group of academics stands before what appears to be a Roman ruin, squinting into the sun. You are somewhere in the back row."
@@ -225,7 +241,7 @@ Understand "group photograph", "group photo", "academics", "faded photograph" as
 The description of the small photograph is "A small framed photograph of a young woman. You do not look at it for long. You have gotten quite good at that."
 Understand "small photograph", "small photo", "woman", "young woman", "framed photograph" as the small photograph.
 
-The description of the engraving is "An old engraving of Toledo, seen from across the Tajo. You bought it at a market in Madrid, years ago, because it was cheap and you had space on the wall. You have walked past it a thousand times without really seeing it.[if the handwritten letter is read]Since Belmonte's letter arrived, you keep finding yourself thinking of it.[end if]"
+The description of the engraving is "An old engraving of Toledo, seen from across the Tajo. You bought it at a market in Madrid, years ago, because it was cheap and you had space on the wall. You have walked past it a thousand times without really seeing it.[if the handwritten letter is read] Since Belmonte's letter arrived, you keep finding yourself thinking of it.[end if]"
 
 Understand "engraving", "Toledo", "old engraving" as the engraving.
 
@@ -236,10 +252,12 @@ The bookshelf is not openable.
 The description of the bookshelf is "Rows of books, ordered and familiar. The collection of many years of research and travel."
 Understand "shelf" as the bookshelf.
 
+The Dozy is a document.
 The printed name of the Dozy is "Histoire des Musulmans d'Espagne".
 The description of the Dozy is "Reinhart Dozy's Histoire des Musulmans d'Espagne. A standard work, heavily annotated in pencil – your own handwriting fills the margins."
 The Dozy is proper-named.
 
+The Caesarius is a document.
 The printed name of the Caesarius is "Dialogus Miraculorum".
 The description of the Caesarius is "Caesarius von Heisterbach's Dialogus Miraculorum, a collection of medieval miracle stories. A bookmark sits somewhere in the middle."
 The Caesarius is proper-named.
@@ -247,10 +265,12 @@ The Caesarius is proper-named.
 Instead of reading the Caesarius:
 	say "The bookmark sits in the distinction on visions – accounts of the dying who heard something, before the end. You cannot remember now why you marked it. You close it again."
 
+The Baedeker is a document.
 The printed name of the Baedeker is "Spanien und Portugal".
 The description of the Baedeker is "Karl Baedeker's Spanien und Portugal. The spine is cracked from repeated use. Toledo has several pages marked."
 The Baedeker is proper-named.
 
+The Rilke is a document.
 The printed name of the Rilke is "Duineser Elegien".
 The description of the Rilke is "A slim volume, its cover worn soft. Rainer Maria Rilke's Duineser Elegien. It sits between the reference works like something that doesn't quite belong."
 The Rilke is proper-named.
@@ -269,10 +289,10 @@ The description of the study-window is "A double-casement window with a wooden f
 
 [=== SOUNDS ===]
 Every turn when the player is in the Study:
-	if the fireplace is lit:
-		if a random chance of 1 in 4 succeeds:
-			choose a random row in the Table of FireplaceSounds;
-			say "[fireSoundSnippet entry][line break]";
+	if a random chance of 1 in 5 succeeds:
+		if the tiled stove is lit:
+			choose a random row in the Table of TiledStoveSounds;
+			say "[stoveSoundSnippet entry][line break]";
 	if the remainder after dividing the turn count by 3 is 0:
 		say "[one of]The clock marks another minute.[or]The clock's pendulum swings, unhurried.[or]The clock ticks on, indifferent.[or]A soft click from the grandfather clock.[cycling][line break]"
 		
@@ -283,8 +303,8 @@ The small photograph is scenery in the Study.
 The engraving is scenery in the Study.
 The study-window is scenery in the Study.
 
-The fireplace is in the Study.
-The polo lighter is on the fireplace.
+The tiled stove is in the Study.
+The polo lighter is in the tweed jacket.
 The old clock is in the Study.
 The wooden desk is in the Study.
 The chair is in the Study.
@@ -307,6 +327,12 @@ Section - Foyer
 Foyer is a room. "A narrow entrance hall with high ceilings, its dark hexagonal floor tiles worn smooth in the middle where generations of feet have passed. A coat rack with a mirror stands beside the door, a single winter coat hanging from it. In the corner, a small telephone table holds a black Bakelite telephone. The bathroom door stands to the west[if bathroom door is closed], closed[end if]. The heavy front door, its upper half frosted glass, leads outside. The hallway continues to the north."
 The Foyer is south of Hallway.
 
+[=== ITEMS ===]
+The telephone is scenery.
+The coat rack is scenery.
+The winter coat is scenery.
+The table is scenery.
+
 The front door is a door.
 The front door is unlocked.
 The front door is scenery.
@@ -314,6 +340,11 @@ The description of the front door is "A heavy door, its upper half frosted glass
 
 [=== ARCHITECTURE ===]
 The front door is south of the Foyer and north of the Stairwell
+
+The telephone is in the Foyer.
+The coat rack is in the Foyer.
+The winter coat is in the Foyer.
+The table is in the Foyer.
 
 Section - Bathroom
 
@@ -325,6 +356,11 @@ The bathroom door is a door.
 The bathroom door is closed.
 The bathroom door is scenery.
 
+The washbasin is scenery.
+The gas water heater is scenery.
+The bathtub is scenery.
+The hand shower is scenery.
+
 The printed name of the bathroom mirror is "mirror".
 Understand "mirror" as the bathroom mirror.
 The description of the bathroom mirror is "A rectangular mirror above the washbasin, framed in white tile."
@@ -335,6 +371,10 @@ Instead of searching the bathroom mirror:
 [=== ARCHITECTURE ===]
 The bathroom door is west of Foyer and east of Bathroom.
 The bathroom mirror is scenery in the Bathroom.
+The washbasin is in the Bathroom.
+The gas water heater is in the Bathroom.
+The bathtub is in the Bathroom.
+The hand shower is in the Bathroom.
 
 Section - Hallway
 
@@ -354,14 +394,14 @@ The pantry door is scenery.
 Understand "door" or "pantry door" as the pantry door.
 The description of the pantry door is "A plain wooden door, its paint worn at the edges. A small keyhole sits below the handle."
 
-The stove is scenery.
+The cast-iron stove is scenery.
 
 The chairs are scenery.
 
 Understand "chair" as the chairs.
 
-The table is scenery.
-The description of the table is "A small table, wiped clean. Two chairs. F. has been here.[if the handwritten note is on the table] A note leans against the salt shaker, where she left it.[end if]"
+The kitchen table is scenery.
+The description of the kitchen table is "A small table, wiped clean. Two chairs. The housekeeper has been here.[if the handwritten note is on the kitchen table] A note leans against the salt shaker, where she left it.[end if]"
 
 The pantry key is undescribed.
 Understand "key" or "small key" or "iron key" as the pantry key.
@@ -378,17 +418,18 @@ Instead of searching the kitchen cabinets:
 	otherwise:
 		say "Nothing else up there."
 
+The handwritten note is a document.
 The handwritten note is undescribed.
 The description of the handwritten note is "A receipt from the Viktualienmarkt, turned over. On the back, a few lines in a neat, economical hand."
 Instead of reading the handwritten note:
-	say "Der Herr von nebenan hat wieder nach Ihnen gefragt. Ich habe gesagt, Sie sind beschäftigt. Die Post liegt auf Ihrem Schreibtisch. Bin morgen früh wieder da. – F.[line break][italic type](The gentleman next door has been asking for you again. I told him you were busy. The post is on your desk. Back tomorrow morning. – F.)[roman type][line break]Wimmer. You already know exactly how it will go: he will stand in the doorway for forty-five minutes explaining why the Romans stole their calendar from a civilisation that modern scholarship refuses to acknowledge, and somewhere in the middle of it he will say something that almost makes sense, and you will lose the thread of whatever you were thinking about before he knocked."
+	say "Der Herr von nebenan hat wieder nach Ihnen gefragt. Ich habe gesagt, Sie sind beschäftigt. Die Post liegt auf Ihrem Schreibtisch. Bin morgen früh wieder da. – F. [line break][line break][italic type](The gentleman next door has been asking for you again. I told him you were busy. The post is on your desk. Back tomorrow morning. – F.)[roman type][line break][line break]Wimmer - You already know exactly how it will go: he will stand in the doorway for forty-five minutes explaining why the Romans stole their calendar from a civilisation that modern scholarship refuses to acknowledge, and somewhere in the middle of it he will say something that almost makes sense, and you will lose the thread of whatever you were thinking about before he knocked."
 
 [=== ARCHITECTURE ===]
 The kitchen cabinets are in the kitchen.
 The handwritten note is on the table.
 
-The stove is in the kitchen.
-The table is in the kitchen.
+The cast-iron stove is in the kitchen.
+The kitchen table is in the kitchen.
 The chairs are in the kitchen.
 
 Section - Pantry
