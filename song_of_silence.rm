@@ -95,21 +95,21 @@ Section - Apartment Variables
 [=== APARTMENT SCOPE VARIABLES ===]
 Table of StreetSounds
 streetSoundSnippet(text)
-"From the street below, the sound of footsteps on cobblestones."
-"A car passes in the street, its engine fading into the distance."
-"The distant sound of a tram."
-"The distant sound of a church bell."
-"A child's voice from the street below."
-"The wind moves through the street outside."
+"Von der Straße das Geräusch von Schritten auf dem Kopfsteinpflaster."
+"Ein Auto fährt die Straße vor dem Haus entlang. Das Geräusch des Motors wird langsam leiser."
+"Die entfernten Geräusche der Tram."
+"In der Ferne hörst du Kirchenglocken läuten."
+"Die lauten Gespräche spielender Kinder auf der Straße."
+"Der Wind frischt auf und weht am Haus entlang."
 
 Table of StaircaseSounds
 staircaseSoundSnippet(text)
-"From the staircase, the creak of a floorboard."
-"Quick Footsteps on the stairs, then silence."
-"Muffled voices from the staircase, too quiet to make out."
-"A neighbour's door, somewhere above."
-"A distant door, somewhere in the building."
-"Someone passes in the stairwell without stopping."
+"Das quietschen einer hölzernen Treppenstufe kommt aus dem Treppenhaus."
+"Schnelle Schritte auf der Treppe, dann Stille."
+"Gemurmel aus dem Treppenhaus, zu leise, um es zu verstehen."
+"Irgendwo über dir wird die Tür einer Wohnung zugeschlagen."
+"Die Eingangstür des Hauses schließt sich leise."
+"Jemand läuft eilig durch den Flur ohne anzuhalten."
 
 [=== APARTMENT SOUNDS ===]
 Every turn when the player is not in the Study and the player is not in the Foyer and the player is not in the Hallway:
@@ -127,16 +127,16 @@ Section - Study
 [=== LOCAL VARIABLES ===]
 Table of TiledStoveSounds
 stoveSoundSnippet(text)
-"A low drone from behind the iron door of the stove – the fire drawing well."
-"The iron door of the firebox ticks as it heats up."
-"A muffled shift from inside the stove. The coals settling."
-"The stove breathes steadily behind its iron door."
-"A dull knock from within the stove."
-"The draft pulls quietly through the stove's damper."
+"Ein tiefes Dröhnen aus dem Kachelofen, das Feuer zieht ordentlich."
+"Ein Ticken und Knacken, das Metall des Ofens heizt auf."
+"Das Geräusch, sich setzender Kohle aus dem Ofen."
+"Es kommt dir vor, als atme der Ofen ein und aus, wenn er Luft zieht."
+"Ein dumpfes Knacken aus dem Ofen."
+"Der Ofen zieht fauchend Zugluft durch die Öffnung unter der Scheibe."
 
 [=== DESCRIPTION ===]
 
-Study is a room. "Your study is a small but comfortable room. Dark wooden floorboards creak softly underfoot. In the corner, a tall stove of cream-coloured ceramic tile stands against the wall[if the tiled stove is lit], the fire is lit, the ceramic feels warm to the touch[otherwise], cold today, the iron door shut[end if]. To your left, a sturdy desk holds a neat arrangement of papers and writing utensils on a leather blotter, a bookshelf beside it, a window above. A well-worn chair stands before it[if the tweed jacket is on the chair and the homburg is on the chair], your jacket and hat draped over it[otherwise if the tweed jacket is on the chair], your jacket hanging over the back[otherwise if the homburg is on the chair], your hat resting on the seat[end if]. To your right, a tall grandfather clock stands against the wall, its steady tick a quiet presence in the room. On the walls hang several framed pictures. A door leads west to the foyer."
+Study is a room. "Dein Arbeitszimmer ist ein kleiner, aber behaglicher Raum. Dunkle Holzdielen knarren leise unter deinen Schritten. In der Ecke steht ein cremefarbener Kachelofen[if the tiled stove is lit], das Feuer brennt, die Kacheln warm unter der Hand[otherwise], heute kalt, die eiserne Tür geschlossen[end if]. Zu deiner Linken ein Schreibtisch aus dunklem Holz — darauf Papiere und Schreibzeug, ordentlich auf einer Lederrunterlage arrangiert, daneben ein Bücherregal, darüber ein Fenster. Davor ein abgenutzter Sessel[if the tweed jacket is on the chair and the homburg is on the chair], deine Jacke und der Hut darüber[otherwise if the tweed jacket is on the chair], die Jacke über der Lehne[otherwise if the homburg is on the chair], der Hut auf dem Sitz[end if]. Zu deiner Rechten eine hohe Standuhr, ihr gleichmäßiges Ticken eine leise, aber stete Begleitung. An den Wänden hängen einige gerahmte Bilder. Eine Tür führt nach Westen zum Flur."
 Study is east of Foyer.
 
 [=== ITEMS ===]
@@ -144,87 +144,88 @@ The tiled stove is scenery.
 The tiled stove can be lit or unlit.
 The tiled stove is unlit.
 
-The description of the tiled stove is "A tall stove of cream-coloured ceramic, floor to nearly ceiling – the kind built to last a century and doing so without complaint. A small iron door near the base sits shut, its damper [if the tiled stove is unlit]closed[otherwise]open[end if]. [if the tiled stove is unlit]The ceramic is cool to the touch. The stove has not been fired today.[otherwise]The stove is lit, the ceramic beginning to warm. It will hold its heat well into the evening.[end if]"
+The description of the tiled stove is "Ein cremefarbener Kachelofen, vom Boden bis fast zur Decke — gebaut für die Ewigkeit. Nahe am Boden eine kleine eiserne Tür, geschlossen; die Zugklappe [if the tiled stove is unlit]zu[otherwise]offen[end if]. [if the tiled stove is unlit]Die Kacheln fühlen sich kühl unter der Hand. Heute wurde nicht angeheizt.[otherwise]Der Ofen brennt, die Kacheln beginnen sich zu erwärmen. Er wird die Wärme bis in den Abend halten.[end if]"
 
 Instead of burning the tiled stove:
 	if the tiled stove is lit:
-		say "It is already going.";
+		say "Das Feuer brennt bereits.";
 	otherwise if the polo lighter is enclosed by the player:
 		now the tiled stove is lit;
-		say "You hold the lighter to the kindling. It catches slowly, then with more confidence. You close the iron door. A faint 
-		smell of coal smoke, and then the stove begins its work.";
+		say "Du hälst die Flamme an den Zunder, der sich erst langsam und dann immer stetiger entzündet. Du schließst die Eisentür - der Geruch von Kohlenrauch kommt dir entgegen. Der Ofen beginnt mit seiner Arbeit.";
 	otherwise:
-		say "You need a flame first."
+		say "Du brauchst zuerst eine Zündquelle."
 
 The polo lighter is a device.
 The polo lighter is switched off.
 The polo lighter is undescribed.
-The description of the polo lighter is "A POLO petrol lighter, made in England – nickel-plated brass, worn smooth at the edges from years of handling. A small horse is stamped into the base. [if polo lighter is switched on]The wick burns with a small, steady flame, faintly blue at  its base.[otherwise]The lift-arm rests flat against the casing. The faint smell of naphtha clings to it.[end if]"
+The description of the polo lighter is "Ein POLO-Benzinfeuerzeug, hergestellt in England — vernickeltes Messing, an den Kanten abgegriffen. In den Boden ist ein kleines Pferd gestanzt. [if polo lighter is switched on]Der Docht brennt mit einer kleinen, ruhigen Flamme, an ihrer Basis leicht bläulich.[otherwise]Der Hebel liegt flach am Gehäuse. Du nimmst den schwachen Geruch von Naphtha war.[end if]"
 
 Instead of switching on the polo lighter:
 	now the polo lighter is switched on;
-	say "You press your thumb against the lift-arm and flip it upward. The flint wheel catches on the second strike, and a small flame rises from the wick – steady, faintly blue at its base. The smell of naphtha, sharp and familiar."
+	say "Du drückst den Daumen gegen den Hebel und klappst ihn auf. Das Reibrad fasst beim zweiten Schlag, und eine kleine Flamme steigt aus dem Docht — ruhig, an ihrer Basis leicht bläulich. Der Geruch von Naphtha, scharf und vertraut."
 
 Instead of switching off the polo lighter:
 	now the polo lighter is switched off;
-	say "You press the lift-arm back down. The flame disappears. A thin thread of smoke rises for a moment, then nothing."
+	say "Du drückst den Hebel zurück. Die Flamme erlischt. Ein dünner Rauchfaden steigt kurz auf, dann nichts."
 		
 Before inserting the polo lighter into something 
 when the polo lighter is switched on:
 	now the polo lighter is switched off;
-	say "You press the arm down before pocketing the lighter. 
-	A close thing.[line break]"
+	say "Du drückst den Hebel herunter, bevor du das Feuerzeug einsteckst. Knapp.[line break]"
 
 The paper envelope is an openable container.
 The paper envelope is closed.
 The paper envelope is undescribed.
-The description of the envelope is "The envelope is made from coarse, heavy paper of high quality, hinting at its importance. [if paper envelope is closed]It is sealed by a thick red wax seal.[otherwise]The wax seal is broken.[end if]"
+The description of the envelope is "Der Umschlag ist aus grobem, schwerem Papier von hoher Qualität - Papier, dass auf besonderen Inhalt deutet. [if paper envelope is closed]Versiegelt mit einem dicken roten Wachssiegel.[otherwise]Das Wachssiegel ist gebrochen.[end if]"
 
 Instead of opening the paper envelope:
 now the paper envelope is open;
-say "You break the wax seal on the envelope and open it. Inside you see a handwritten letter[line break]"
+say "Du brichst das Wachssiegel auf dem Umschlag, um ihn zu öffnen. Darin siehst du einen handgeschriebenen Brief.[line break]"
 
 Check closing the paper envelope:
-say "[if paper envelope is open]The wax seal is broken and the heavy paper is too stiff to stay shut on its own.[otherwise]The envelope is already closed. In fact, an unbroken wax seal indicates it has not been openend yet." instead.
+say "[if paper envelope is open]Das Siegel ist gebrochen und das schwere Papier lässt nicht mehr vollständig schließen.[otherwise]Der Umschlag ist bereits geschlossen. Tatsächlich macht das ungebrochene Wachsiegel deutlich, dass er noch nicht geöffnet wurde."
 
 The red wax seal is part of the paper envelope.
 The red wax seal is undescribed.
-The description of the red wax seal is "[if paper envelope is closed]A thick red wax seal bearing a personal signet – the initials A.B. set beneath a small heraldic device.[otherwise]The red wax seal on the envelope is broken.[end if]"
+The description of the red wax seal is "[if paper envelope is closed]Ein dickes rotes Wachssiegel mit einem persönlichen Signet — die Initialen A.B. unter einem kleinen Wappenzeichen.[otherwise]Das Wachssiegel ist gebrochen.[end if]"
 
 The handwritten letter is a document.
-The description of the handwritten letter is "Written in ink with a delicate handwriting. You notice dots of ink on several letters where the writer seems to have paused for a moment."
+The description of the handwritten letter is "In einer feinen Handschrift verfasst. Dir fallen Tintenpunkte auf, immer da, wo der Verfasser nach einem Wort kurz innegehalten hat.."
 
 The handwritten letter can be read or unread. The handwritten letter is unread.
 
 Instead of reading the handwritten letter:
 	now the handwritten letter is read;
-	say "[italic type]Toledo, 5th October 1938[paragraph break]Dear friend,[paragraph break]I hope this letter finds you well. I write to you in your capacity as a scholar of medieval German texts -- I have come across something in the cathedral archive here that I believe would interest you considerably.[paragraph break]Among the documents I have been cataloguing, I found a manuscript I cannot yet date with precision, though it appears to be from the early thirteenth century. It is written in Middle High German, by a monk from Regensburg, and it describes an incident at the ford of the Tagus river -- unusual in content, historically significant, and in certain details quite unlike anything I have encountered before. I would prefer to discuss it in person rather than commit the details to a letter.[paragraph break]I should also mention that I have a personal reason for wanting to speak with someone I trust. There is a matter from 1936 -- something I witnessed during the siege here -- which I have never spoken of to anyone. I find myself thinking of it again.[paragraph break]If you can arrange to come to Toledo, I would be most grateful. Ask for me at the cathedral. I will explain everything when you arrive.[paragraph break]With collegial regards,[line break]Arturo Belmonte[roman type][paragraph break][italic type]P.S. Toledo is not quite what it was. You will understand when you arrive.[line break][roman type]"
+	say "[italic type]Toledo, 5. Oktober 1938[paragraph break]Lieber Freund,[paragraph break]ich hoffe, sie sind wohlauf. Ich wende mich an Sie in Ihrer Eigenschaft als Kenner mittelalterlicher deutscher Texte — ich bin hier im Archiv der Kathedrale auf etwas gestoßen, das Sie, wie ich glaube, erheblich interessieren dürfte.[paragraph break]Unter den Dokumenten, die ich katalogisiere, fand ich ein Manuskript, das ich noch nicht mit Sicherheit datieren kann, obwohl es aus dem 
+frühen dreizehnten Jahrhundert zu stammen scheint. Es ist auf Mittelhochdeutsch verfasst, von einem Mönch aus Regensburg, und 
+beschreibt einen Vorfall an der Furt des Tajo — ungewöhnlich im Inhalt, historisch bedeutsam, und in gewissen Details ganz anders als alles, was mir bisher begegnet ist. Ich würde es vorziehen, die Einzelheiten persönlich zu besprechen, anstatt sie einem Brief anzuvertrauen.[paragraph break]Ich sollte auch erwähnen, dass ich einen persönlichen Grund habe, mit jemandem zu sprechen, dem ich vertraue. Es gibt eine Angelegenheit aus dem Jahr 1936 — etwas, das ich während der Belagerung hier erlebt habe und worüber ich mit niemandem gesprochen habe. Ich ertappe mich jedoch dabei, wieder daran zu denken.[paragraph break]
+Falls Sie also nach Toledo kommen können, wäre ich Ihnen sehr dankbar. Fragen Sie an der Kathedrale nach mir. Ich werde Ihnen alles erklären, wenn Sie ankommen.[paragraph break]Mit kollegialen Grüßen,[line break]Arturo Belmonte[roman type][paragraph break][italic type]P.S. Toledo ist leider nicht mehr, was es einmal war. Sie werden es verstehen, wenn Sie ankommen.[line break][roman type]"
 
 The old clock is scenery.
-The description of the old clock is "Behind the glass panel, a brass pendulum swings in long, unhurried arcs – patient, indifferent, as it has always been. The hands show half past two."
+The description of the old clock is "Hinter dem Glasfenster schwingt ein Kupfernes Pendel in langsam und unaufhaltsam in langen Bahnen. Die Zeiger zeigen halb drei."
 
 The wooden desk is a supporter.
 It is undescribed.
-The description of the wooden desk is "A sturdy, wooden desk.[if the paper envelope is on the wooden desk] An envelope of coarse paper sits at the center.[end if][if the fountain pen is on the wooden desk] A fountain pen rests beside the blotter.[end if] A well-worn chair stands before it."
+The description of the wooden desk is "Ein Schreibtisch aus dunklem Holz.[if the paper envelope is on the wooden desk] Ein Umschlag aus schwerem Papier liegt auf der Lederunterlage.[end if][if the fountain pen is on the wooden desk] Ein Füllfederhalter liegt daneben.[end if] Ein abgenutzer Sessel steht davor."
 
 The fountain pen is undescribed.
-The description of the fountain pen is "A well-used fountain pen, its nib slightly worn. The ink is dark blue."
+The description of the fountain pen is "Ein regelmäßig benutzter Füller. Es scheint als wird es bald Zeit für eine neue Feder. Er ist mit blauer Tinte gefüllt."
 Understand "pen" or "fountain pen" as the fountain pen.
 
 The chair is a supporter.
 The chair is undescribed.
-The description of the chair is "The leather seat is cracked and soft from years of use.[if the tweed jacket is on the chair] A tweed jacket hangs over the back.[end if][if the homburg is on the chair] A homburg hat rests on the seat.[end if]"
+The description of the chair is "Das Leder des Sessels zeigt deutliche Abnutzungsspuren und Risse.[if the tweed jacket is on the chair] Eine Tweedjacke hängt über der Rückenlehne.[end if][if the homburg is on the chair] Ein Homburger liegt auf der Sitzfläche.[end if]"
 
 The tweed jacket is a container.
 The tweed jacket is wearable.
 The tweed jacket is undescribed.
 The carrying capacity of the tweed jacket is 8.
-The description of the tweed jacket is "A well-worn brown tweed jacket, the elbows slightly shiny from years of use."
+The description of the tweed jacket is "Eine braune Tweedjacke, der Stoff an den Ellenbogen ist schon etwas abgenutzt und glänzt leicht."
 Understand "jacket" or "tweed" as the tweed jacket.
 
 The homburg hat is undescribed.
 The homburg hat is wearable.
-The description of the homburg hat is "A dark grey homburg, brushed clean and well-kept. The hat of a man who takes some pride in his appearance, even in difficult times."
+The description of the homburg hat is "Ein dunkelgrauer Homburger, tadellos gepflegt. Der Hut eines Mannes, dem sein Äußeres etwas bedeutet — auch in schwierigen Zeiten."
 Understand "hat" or "homburg" as the homburg.
 
 The pocket calendar is undescribed.
